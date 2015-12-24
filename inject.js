@@ -1,7 +1,3 @@
-// chrome.browserAction.onClicked.addListener(function(tab) {
-	// raptorize();
-// });
-
 chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.executeScript({
     code: 'raptorize()'
@@ -17,4 +13,4 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
         // Runs on example.com, example.net, but also example.foo.com
         hostContains: '.rallydev.'
     }]
-});	
+});
