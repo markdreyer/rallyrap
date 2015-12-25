@@ -10,7 +10,7 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
     });
 }, {
     url: [{
-        // Runs on example.com, example.net, but also example.foo.com
+        // Runs on rallydev.com, rallydev.net, but also rallydev.foo.com
         hostContains: '.rallydev.'
     }]
 });

@@ -7,63 +7,41 @@
  * Copyright 2010, ZURB
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
-*/
+ */
 
-    function raptorize() {
+function raptorize() {
+    var locked = false;
 
-            //Raptor Vars
-            var raptorImageMarkup = '<img id="elRaptor" style="display: none" src="' +
-                chrome.extension.getURL('raptor.png') + '" />';
-            var raptorAudioMarkup = '<audio id="elRaptorShriek" preload="auto"><source src="' +
+    function init() {
+        var raptorImageMarkup = '<img id="elRaptor" src="' +
+                chrome.extension.getURL('raptor.png') + '" />',
+            raptorAudioMarkup = '<audio id="elRaptorShriek" preload="auto"><source src="' +
                 chrome.extension.getURL('raptor-sound.mp3') + '" /><source src="' +
-                 chrome.extension.getURL('raptor-sound.ogg') + '" /></audio>';
-            var locked = false;
+                chrome.extension.getURL('raptor-sound.ogg') + '" /></audio>',
+            raptor,
+            raptorSound;
 
-            //Append Raptor and Style
-            $('body').append(raptorImageMarkup);
-            $('body').append(raptorAudioMarkup);
-            var raptor = $('#elRaptor').css({
-                'position': 'fixed',
-                'bottom': '-700px',
-                'right' : '0',
-                'display' : 'block',
-                'z-index' : '99999'
-            });
+        locked = true;
 
-            // Animating Code
-            function init() {
+        //Append Raptor
+        document.querySelector('body').innerHTML += raptorImageMarkup + raptorAudioMarkup;
+        raptor = document.getElementById('elRaptor');
+        raptorSound = document.getElementById('elRaptorShriek');
 
-                locked = true;
+        //Dispose after animation
+        raptor.addEventListener('animationend', function() {
+            raptor.parentNode.removeChild(raptor);
+            raptorSound.parentNode.removeChild(raptorSound);
+        });
 
-                //Sound Hilarity
-                function playSound() {
-                    document.getElementById('elRaptorShriek').play();
-                }
-                playSound();
+        //Play Sound
+        raptorSound.play();
 
-                // Movement Hilarity
-                raptor.animate({
-                    'bottom' : '0'
-                }, function() {
-                    $(this).animate({
-                        'bottom' : '-130px'
-                    }, 100, function() {
-                        var offset = (($(this).position().left) + 400);
-                        $(this).delay(300).animate({
-                            'right' : offset
-                        }, 2200, function() {
-                            raptor = $('#elRaptor').css({
-                                'bottom': '-700px',
-                                'right' : '0'
-                            });
-                            locked = false;
-                        });
-                    });
-                });
-            }
+        //Animate
+        raptor.style.animation = 'up-and-over 4s';
+    }
 
-            if (!locked) {
-                init();
-            }
-    }//orbit plugin call
-
+    if (!locked) {
+        init();
+    }
+}

@@ -1,0 +1,23 @@
+@keyframes up-and-over
+{
+    0% {
+        bottom: -600px
+        left: 0;
+    }
+    20% {
+        bottom: 100px;
+        left: 0;
+    }
+    100% {
+        bottom: -200px;
+        left: 120%;
+    }
+}
+
+#elRaptor {
+    position: fixed;
+    bottom: -600px;
+    display : block;
+    z-index : 99999;
+    transform: rotateY(180deg);
+}

@@ -1,6 +1,7 @@
 {
    "background": {
-      "scripts": [ "jquery.min.js", "inject.js" ]
+      "scripts": ["inject.js"],
+      "persistent": false
    },
    "browser_action": {
       "default_icon": "icon.png",
@@ -9,6 +10,7 @@
    },
    "content_scripts": [ {
       "js": [ "jquery.min.js", "jquery.raptorize.1.0.js", "rallyrap.js" ],
+      "css": ["rallyrap.css"],
       "matches": [ "http://*/*", "https://*/*" ]
    } ],
    "description": "Instant Velociraptor on any page and for Rally",
