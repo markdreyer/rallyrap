@@ -12,35 +12,49 @@ var raptorizeLock;
 function raptorize() {
 
     function init(config) {
-        var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('raptor.png'),
-            raptorImageMarkup = '<img id="elRaptor" src="' + imageUrl + '" />',
-            raptorAudioMarkup = '<audio id="elRaptorShriek" preload="auto"><source src="' +
-                chrome.extension.getURL('raptor-sound.mp3') + '" /><source src="' +
-                chrome.extension.getURL('raptor-sound.ogg') + '" /></audio>',
-            raptor,
-            raptorSound;
+        var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('raptor-nye.png'),
+            audioUrl = chrome.extension.getURL('raptor-sound.mp3'),
+            audioUrlOgg = chrome.extension.getURL('raptor-sound.ogg'),
+            raptorizeEl = getRaptorizeElement(imageUrl, audioUrl, audioUrlOgg),
+            raptor = raptorizeEl.querySelector('#elRaptor');
 
         //Append Raptor
-        document.querySelector('body').innerHTML += raptorImageMarkup + raptorAudioMarkup;
-        raptor = document.getElementById('elRaptor');
-        raptorSound = document.getElementById('elRaptorShriek');
-        if (config.useCustomImage) {
-            //Override transform for custom images
-            raptor.style.transform = 'rotateY(360deg)';
-        }
+        document.body.appendChild(raptorizeEl);
 
         //Dispose after animation
         raptor.addEventListener('animationend', function() {
-            raptor.parentNode.removeChild(raptor);
-            raptorSound.parentNode.removeChild(raptorSound);
+            document.body.removeChild(raptorizeEl);
             raptorizeLock = false;
         });
 
         //Play Sound
-        raptorSound.play();
+        raptorizeEl.querySelector('#elRaptorShriek').play();
 
         //Animate
         raptor.style.animation = 'up-and-over 4s';
+    }
+
+    function getRaptorizeElement(imageUrl, audioUrl, audioUrlOgg) {
+        var raptorize = document.createElement('span'),
+            source = document.createElement('source'),
+            sourceOgg = document.createElement('source'),
+            image = document.createElement('img'),
+            audio = document.createElement('audio');
+        image.setAttribute('id', 'elRaptor');
+        image.setAttribute('src', imageUrl);
+
+        audio.setAttribute('id', 'elRaptorShriek');
+        audio.setAttribute('preload', 'auto');
+
+        source.setAttribute('src', audioUrl);
+        sourceOgg.setAttribute('src', audioUrlOgg);
+        audio.appendChild(source);
+        audio.appendChild(sourceOgg);
+
+        raptorize.appendChild(image);
+        raptorize.appendChild(audio);
+
+        return raptorize;
     }
 
     if (!raptorizeLock) {
