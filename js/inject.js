@@ -8,7 +8,7 @@ var background = {
 
         chrome.webNavigation.onCompleted.addListener(function(details) {
             chrome.tabs.executeScript(details.tabId, {
-                file: 'rallyrap.js'
+                file: 'js/rallyrap.js'
             });
         }, {
             url: [{
