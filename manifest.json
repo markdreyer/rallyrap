@@ -1,26 +1,26 @@
 {
    "background": {
-      "scripts": ["inject.js"],
+      "scripts": ["js/inject.js"],
       "persistent": false
    },
    "browser_action": {
-      "default_icon": "icon.png",
-      "icons": [ "icon.png" ],
+      "default_icon": "img/icon.png",
+      "icons": [ "img/icon.png" ],
       "name": "Rally Raptorize"
    },
    "content_scripts": [ {
-      "js": [ "jquery.min.js", "jquery.raptorize.1.0.js", "rallyrap.js" ],
-      "css": ["rallyrap.css"],
+      "js": [ "js/jquery.min.js", "js/jquery.raptorize.1.0.js", "js/rallyrap.js" ],
+      "css": ["css/rallyrap.css"],
       "matches": [ "http://*/*", "https://*/*" ]
    } ],
    "options_ui": {
-       "page": "options.html",
+       "page": "html/options.html",
        "chrome_style": true
      },
    "description": "Instant Velociraptor on any page and for Rally",
    "icons": {
-      "128": "icon128.png",
-      "48": "icon48.png"
+      "128": "img/icon128.png",
+      "48": "img/icon48.png"
    },
    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlT3aRfzghAnWZLcm4ViOyz2GlmF7iRZhE7olAEbidJmPIo0i8XCsoe3bWBxSyqx6vfrQheD4nTd4+EyeLbnyuUcK0bpEeY01vtpyI1j5aZObFkV78O6l/6feF9YcVbHH/ofm8EL4a0K6WfKT7jmoDTT2itCKPxy/ewEtXFxdskMKHQHDKNqEpB4nlwnDupOONtGOOpJnSyORxYvpzOcSrbuBmwJjmTN6plC9ji9kDCp5J3+KbdRoFkUSBv9sJdZiD2c7xfD62mJkDDEFzj//LFU8mb5XoSDS4TXrJj+BelI57AZi1S9zJtMm0J52D9hF4+JOAb35yA8Hy/4hkAhlOwIDAQAB",
    "manifest_version": 2,
@@ -28,5 +28,5 @@
    "permissions": [ "webNavigation", "activeTab", "http://*/", "storage" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "1.3",
-   "web_accessible_resources": [ "raptor-sound.ogg", "raptor.png", "raptor-sound.mp3", "raptor-nye.png" ]
+   "web_accessible_resources": [ "img/*", "audio/*"]
 }

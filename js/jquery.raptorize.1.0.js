@@ -12,9 +12,9 @@ var raptorizeLock;
 function raptorize() {
 
     function init(config) {
-        var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('raptor-nye.png'),
-            audioUrl = chrome.extension.getURL('raptor-sound.mp3'),
-            audioUrlOgg = chrome.extension.getURL('raptor-sound.ogg'),
+        var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('img/superman.png'),
+            audioUrl = chrome.extension.getURL('audio/raptor-sound.mp3'),
+            audioUrlOgg = chrome.extension.getURL('audio/raptor-sound.ogg'),
             raptorizeEl = getRaptorizeElement(imageUrl, audioUrl, audioUrlOgg),
             raptor = raptorizeEl.querySelector('#elRaptor');
 
