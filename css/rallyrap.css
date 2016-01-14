@@ -1,7 +1,8 @@
+
 @keyframes up-and-over
 {
     0% {
-        bottom: -600px
+        bottom: -600px;
         left: 0;
     }
     20% {
@@ -14,9 +15,42 @@
     }
 }
 
+@keyframes cheesy-ad
+{
+    0% {
+        bottom: -200px;
+        opacity: 1;
+    }
+    50% {
+        bottom: 0px;
+        opacity: 1;
+    }
+    90% {
+      bottom: 0px;
+      opacity: 1;      
+    }
+    95% {
+        bottom: 0px;
+        opacity: .5;
+    }
+    100% {
+        bottom: 0px;
+        opacity: 0;
+    }
+}
+
 #elRaptor {
     position: fixed;
     bottom: -600px;
     display : block;
     z-index : 99999;
+}
+
+
+#raptorBlock {
+  position:fixed;
+  bottom:  0px;
+  z-index: 99999;
+  right: 0px;
+  display:block;
 }

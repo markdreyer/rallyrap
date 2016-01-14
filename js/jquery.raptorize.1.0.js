@@ -8,6 +8,42 @@
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
  */
+
+
+function raptorblock() {
+
+  function init(){
+    var noBlockedImgUrl = chrome.extension.getURL('img/blocked-luke.gif');
+    var noBlockImgEl = getNoBlockedElement(noBlockedImgUrl);
+    var noblock = noBlockImgEl.querySelector('#raptorBlock');
+
+    //Append Raptor
+    document.body.appendChild(noBlockImgEl);
+
+    //Dispose after animation
+    noblock.addEventListener('animationend', function() {
+        document.body.removeChild(noBlockImgEl);
+    });
+
+    //Animate
+    noblock.style.animation = 'cheesy-ad 4s';
+
+  }
+
+  function getNoBlockedElement(imageUrl)
+  {
+      var blockSpan = document.createElement('span');
+      var image = document.createElement('img');
+      image.setAttribute('id', 'raptorBlock');
+      image.setAttribute('src', imageUrl);
+      blockSpan.appendChild(image);
+      return blockSpan;
+  }
+
+  init();
+
+}
+
 var raptorizeLock;
 function raptorize() {
 
@@ -17,6 +53,7 @@ function raptorize() {
             audioUrlOgg = chrome.extension.getURL('audio/raptor-sound.ogg'),
             raptorizeEl = getRaptorizeElement(imageUrl, audioUrl, audioUrlOgg),
             raptor = raptorizeEl.querySelector('#elRaptor');
+
 
         //Append Raptor
         document.body.appendChild(raptorizeEl);
@@ -33,6 +70,8 @@ function raptorize() {
         //Animate
         raptor.style.animation = 'up-and-over 4s';
     }
+
+
 
     function getRaptorizeElement(imageUrl, audioUrl, audioUrlOgg) {
         var raptorize = document.createElement('span'),
