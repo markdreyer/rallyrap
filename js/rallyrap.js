@@ -9,8 +9,23 @@ $(function() {
                 raptorize();
             }
         });
+
+
+        viewport.addEventListener('click', function(e) {
+
+              /* On click of the blocked button */
+              if($(e.target).hasClass('icon-blocked'))
+              {
+                  /* If this is not - unblock */
+                  if($(e.target).hasClass('rly-active') == false )
+                  {
+                    console.log('blocked');
+                    raptorblock();
+                  }
+              }
+
+        });
     }
 
 }
 );
-
