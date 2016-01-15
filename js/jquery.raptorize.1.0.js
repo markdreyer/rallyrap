@@ -9,39 +9,44 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
+/**
+ * Creates an image on the screen with animation. The image is destroyed
+ * after animation has completed.
+ *
+ * @param  {string} imagePath Relative path to the image resource.
+ * @param  {string} imageId Id to use when creating the image tag. This needs to be
+ *                          unique across all of rally's ID's.
+ * @param  {string} animationClass CSS class to use for the animation.
+ */
+function showImage(imagePath, imageId, animationClass) {
+    var imageSrc = chrome.extension.getURL(imagePath),
+        imageEl = createImageEl(),
+        noblock = imageEl.querySelector('#' + imageId);
 
-function raptorblock() {
+    //Append image
+    document.body.appendChild(imageEl);
 
-  function init(){
-    var noBlockedImgUrl = chrome.extension.getURL('img/blocked-luke.gif');
-    var noBlockImgEl = getNoBlockedElement(noBlockedImgUrl);
-    var noblock = noBlockImgEl.querySelector('#raptorBlock');
-
-    //Append Raptor
-    document.body.appendChild(noBlockImgEl);
-
-    //Dispose after animation
+    //Dispose image
     noblock.addEventListener('animationend', function() {
-        document.body.removeChild(noBlockImgEl);
+        document.body.removeChild(imageEl);
     });
 
     //Animate
-    noblock.style.animation = 'cheesy-ad 4s';
+    noblock.style.animation = animationClass;
 
-  }
-
-  function getNoBlockedElement(imageUrl)
-  {
-      var blockSpan = document.createElement('span');
-      var image = document.createElement('img');
-      image.setAttribute('id', 'raptorBlock');
-      image.setAttribute('src', imageUrl);
-      blockSpan.appendChild(image);
-      return blockSpan;
-  }
-
-  init();
-
+    /**
+     * Creates a new image element wrapped in a span on the document.
+     * @return {Element} The created span element object.
+     */
+    function createImageEl()
+    {
+        var span = document.createElement('span');
+        var image = document.createElement('img');
+        image.setAttribute('id', imageId);
+        image.setAttribute('src', imageSrc);
+        span.appendChild(image);
+        return span;
+    }
 }
 
 var raptorizeLock;

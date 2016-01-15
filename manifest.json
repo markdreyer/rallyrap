@@ -24,7 +24,7 @@
    },
    "manifest_version": 2,
    "name": "Raptorize for Rally",
-   "permissions": [ "webNavigation", "activeTab", "http://*/", "storage" ],
+   "permissions": [ "webNavigation", "activeTab", "http://*/", "https://*/", "storage" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "1.4",
    "web_accessible_resources": [ "img/*", "audio/*"]

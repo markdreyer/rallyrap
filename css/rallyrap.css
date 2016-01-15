@@ -15,26 +15,26 @@
     }
 }
 
-@keyframes cheesy-ad
+@keyframes peek-up-fade-out
 {
     0% {
         bottom: -200px;
         opacity: 1;
     }
     50% {
-        bottom: 0px;
+        bottom: 0;
         opacity: 1;
     }
     90% {
-      bottom: 0px;
-      opacity: 1;      
+      bottom: 0;
+      opacity: 1;
     }
     95% {
-        bottom: 0px;
+        bottom: 0;
         opacity: .5;
     }
     100% {
-        bottom: 0px;
+        bottom: 0;
         opacity: 0;
     }
 }
@@ -46,11 +46,10 @@
     z-index : 99999;
 }
 
-
 #raptorBlock {
-  position:fixed;
-  bottom:  0px;
-  z-index: 99999;
-  right: 0px;
-  display:block;
+    position:fixed;
+    bottom:  0;
+    z-index: 99999;
+    right: 0;
+    display:block;
 }

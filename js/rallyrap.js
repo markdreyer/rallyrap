@@ -12,15 +12,16 @@ $(function() {
 
 
         viewport.addEventListener('click', function(e) {
+          var target = $(e.target);
 
               /* On click of the blocked button */
-              if($(e.target).hasClass('icon-blocked'))
+              if (target.hasClass('icon-blocked'))
               {
                   /* If this is not - unblock */
-                  if($(e.target).hasClass('rly-active') == false )
+                  if (target.hasClass('rly-active') === false)
                   {
-                    console.log('blocked');
-                    raptorblock();
+                    console.log('RallyRap: blocked');
+                    showImage('img/blocked-luke.gif', 'raptorBlock', 'peek-up-fade-out 4s');
                   }
               }
 
