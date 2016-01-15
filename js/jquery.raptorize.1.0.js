@@ -78,26 +78,24 @@ function playSound(elementId, soundPaths) {
  */
 function raptorize() {
 
-    /**
-     * Runs the raptorize functionality. This will animate an image and play
-     * a sound.
-     * @param  {object} config Configuration object as returned by chrome storage API.
-     */
-    function run(config) {
-        var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('img/superman.png');
-
-        showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
-
-        playSound('elRaptorShriek', [chrome.extension.getURL('audio/raptor-sound.mp3'),
-                                     chrome.extension.getURL('audio/raptor-sound.ogg')]);
-    }
-
     //Load config
     chrome.storage.sync.get({
         //Defaults
         useCustomImage: false,
         imageUrl: ''
-    }, function(items) {
-        run(items);
-    });
+    },
+        /**
+         * Runs the raptorize functionality. This will animate an image and play
+         * a sound.
+         * @param  {object} config Configuration object as returned by chrome storage API.
+         */
+        function run(config) {
+            var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('img/superman.png');
+
+            showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
+
+            playSound('elRaptorShriek', [chrome.extension.getURL('audio/raptor-sound.mp3'),
+                                         chrome.extension.getURL('audio/raptor-sound.ogg')]);
+        }
+    );
 }
