@@ -13,14 +13,13 @@
  * Creates an image on the screen with animation. The image is destroyed
  * after animation has completed.
  *
- * @param  {string} imagePath Relative path to the image resource.
+ * @param  {string} imageSrc URL of the image resource.
  * @param  {string} imageId Id to use when creating the image tag. This needs to be
  *                          unique across all of rally's ID's.
  * @param  {string} animationClass CSS class to use for the animation.
  */
-function showImage(imagePath, imageId, animationClass) {
-    var imageSrc = chrome.extension.getURL(imagePath),
-        imageEl = createImageEl(),
+function showImage(imageSrc, imageId, animationClass) {
+    var imageEl = createImageEl(),
         noblock = imageEl.querySelector('#' + imageId);
 
     //Append image
@@ -49,68 +48,67 @@ function showImage(imagePath, imageId, animationClass) {
     }
 }
 
-var raptorizeLock;
-function raptorize() {
+/**
+ * Creates an audio element on the document and plays it.
+ * @param  {string} elementId Identifier of the audio element to be created.
+ * @param  {string[]/string} soundPaths Array of sound paths to use for the source tags. If more than one
+ *                                      source is used, the browser will pick whatever format it likes best.
+ */
+function playSound(elementId, soundPaths) {
+    var audio = document.createElement('audio');
 
-    function init(config) {
-        var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('img/superman.png'),
-            audioUrl = chrome.extension.getURL('audio/raptor-sound.mp3'),
-            audioUrlOgg = chrome.extension.getURL('audio/raptor-sound.ogg'),
-            raptorizeEl = getRaptorizeElement(imageUrl, audioUrl, audioUrlOgg),
-            raptor = raptorizeEl.querySelector('#elRaptor');
-
-
-        //Append Raptor
-        document.body.appendChild(raptorizeEl);
-
-        //Dispose after animation
-        raptor.addEventListener('animationend', function() {
-            document.body.removeChild(raptorizeEl);
-            raptorizeLock = false;
-        });
-
-        //Play Sound
-        raptorizeEl.querySelector('#elRaptorShriek').play();
-
-        //Animate
-        raptor.style.animation = 'up-and-over 4s';
-    }
-
-
-
-    function getRaptorizeElement(imageUrl, audioUrl, audioUrlOgg) {
-        var raptorize = document.createElement('span'),
-            source = document.createElement('source'),
-            sourceOgg = document.createElement('source'),
-            image = document.createElement('img'),
-            audio = document.createElement('audio');
-        image.setAttribute('id', 'elRaptor');
-        image.setAttribute('src', imageUrl);
-
-        audio.setAttribute('id', 'elRaptorShriek');
+        audio.setAttribute('id', elementId);
         audio.setAttribute('preload', 'auto');
 
-        source.setAttribute('src', audioUrl);
-        sourceOgg.setAttribute('src', audioUrlOgg);
-        audio.appendChild(source);
-        audio.appendChild(sourceOgg);
+        if (typeof(soundPaths) === 'string') {
+            soundPaths = [soundPaths];
+        }
 
-        raptorize.appendChild(image);
-        raptorize.appendChild(audio);
+        for (var i = 0; i < soundPaths.length; i++) {
+            source = document.createElement('source');
+            source.setAttribute('src', soundPaths[i]);
+            audio.appendChild(source);
+        }
 
-        return raptorize;
-    }
+        audio.play();
+}
 
-    if (!raptorizeLock) {
-        raptorizeLock = true;
+/**
+ * Unleash the Beast!
+ */
+function raptorize() {
 
-        //Load config
-        chrome.storage.sync.get({
-            //Defaults
-            useCustomImage: false,
-            imageUrl: ''
-        }, function(items) {
-            init(items);
-        });
-    }
+    //Load config
+    chrome.storage.sync.get({
+        //Defaults
+        useCustomImage: false,
+        useCustomSound: false,
+        imageUrl: '',
+        soundUrl: ''
+    },
+        /**
+         * Runs the raptorize functionality. This will animate an image and play
+         * a sound.
+         * @param  {object} config Configuration object as returned by chrome storage API.
+         */
+        function run(config) {
+            var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('img/superman.png'),
+                soundUrl = config.useCustomSound ? config.soundUrl :
+                            [chrome.extension.getURL('audio/raptor-sound.mp3'),
+                             chrome.extension.getURL('audio/raptor-sound.ogg')];
+
+            showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
+
+            playSound('elRaptorShriek', soundUrl);
+        }
+    );
+}
+
+/**
+ * Animation/sound for when a task is blocked.
+ *
+ */
+function raptorBlock() {
+    showImage(chrome.extension.getURL('img/blocked-luke.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
+    playSound('elRaptorBlock', chrome.extension.getURL('audio/nooo.mp3'));
 }

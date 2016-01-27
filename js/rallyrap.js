@@ -21,7 +21,7 @@ $(function() {
                   if (target.hasClass('rly-active') === false)
                   {
                     console.log('RallyRap: blocked');
-                    showImage('img/blocked-luke.gif', 'raptorBlock', 'peek-up-fade-out 4s');
+                    raptorBlock();
                   }
               }
 

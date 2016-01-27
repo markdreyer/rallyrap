@@ -2,9 +2,13 @@
 function save_options() {
   var useCustomImage = document.getElementById('useCustomImage').checked;
   var imageUrl = document.getElementById('imageUrl').value;
+  var useCustomSound = document.getElementById('useCustomSound').checked;
+  var soundUrl = document.getElementById('soundUrl').value;
   chrome.storage.sync.set({
     useCustomImage: useCustomImage,
-    imageUrl: imageUrl
+    useCustomSound: useCustomSound,
+    imageUrl: imageUrl,
+    soundUrl: soundUrl
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -19,10 +23,14 @@ function restore_options() {
   chrome.storage.sync.get({
     //Defaults
     useCustomImage: false,
-    imageUrl: ''
+    useCustomSound: false,
+    imageUrl: '',
+    soundUrl: ''
   }, function(items) {
     document.getElementById('useCustomImage').checked = items.useCustomImage;
     document.getElementById('imageUrl').value = items.imageUrl;
+    document.getElementById('useCustomSound').checked = items.useCustomSound;
+    document.getElementById('soundUrl').value = items.soundUrl;
   });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
