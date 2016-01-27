@@ -82,7 +82,9 @@ function raptorize() {
     chrome.storage.sync.get({
         //Defaults
         useCustomImage: false,
-        imageUrl: ''
+        useCustomSound: false,
+        imageUrl: '',
+        soundUrl: ''
     },
         /**
          * Runs the raptorize functionality. This will animate an image and play
@@ -90,12 +92,14 @@ function raptorize() {
          * @param  {object} config Configuration object as returned by chrome storage API.
          */
         function run(config) {
-            var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('img/superman.png');
+            var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('img/superman.png'),
+                soundUrl = config.useCustomSound ? config.soundUrl :
+                            [chrome.extension.getURL('audio/raptor-sound.mp3'),
+                             chrome.extension.getURL('audio/raptor-sound.ogg')];
 
             showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
 
-            playSound('elRaptorShriek', [chrome.extension.getURL('audio/raptor-sound.mp3'),
-                                         chrome.extension.getURL('audio/raptor-sound.ogg')]);
+            playSound('elRaptorShriek', soundUrl);
         }
     );
 }
