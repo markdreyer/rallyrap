@@ -103,3 +103,12 @@ function raptorize() {
         }
     );
 }
+
+/**
+ * Animation/sound for when a task is blocked.
+ *
+ */
+function raptorBlock() {
+    showImage(chrome.extension.getURL('img/blocked-luke.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
+    playSound('elRaptorBlock', chrome.extension.getURL('audio/nooo.mp3'));
+}
