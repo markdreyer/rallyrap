@@ -3,13 +3,18 @@ $(function() {
     if (viewport) {
 
         /**
-         * Listener for completing a task.
+         * Listener for moving a task.
          */
         viewport.addEventListener('mouseup', function(e) {
-            var index = $('.rally-drop-indicator').parents('td').index();
-            console.log('RallyRap: column index=' + index);
-            if (index === 5) {
+            var toIndex = $('.rally-drop-indicator').parents('td').index(),
+                fromIndex = $('.dragged-card').parents('td').index();
+            console.log('RallyRap: column fromIndex=' + fromIndex);
+            console.log('RallyRap: column toIndex=' + toIndex);
+            if (toIndex === 5) {
                 raptorize();
+            } else if (toIndex < fromIndex && toIndex >= 0) {
+                //Task moved back
+                raptorNoSoup();
             }
         });
 

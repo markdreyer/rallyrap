@@ -119,3 +119,8 @@ function raptorBlock() {
 function raptorMakeMyDay() {
     playSound('elMMD', chrome.extension.getURL('audio/makeMyDay.mp3'));
 }
+
+function raptorNoSoup() {
+    showImage(chrome.extension.getURL('img/soupNazi.gif'), 'elNoSoupImg', 'peek-down-quick 2s');
+    playSound('elNoSoup', chrome.extension.getURL('audio/noSoup.mp3'));
+}

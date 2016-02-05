@@ -38,7 +38,21 @@
         opacity: 0;
     }
 }
-
+@keyframes peek-down-quick
+{
+    0% {
+        top: -182px;
+    }
+    20% {
+        top: 10px;
+    }
+    80% {
+        top: 25px;
+    }
+    100% {
+        top:0;
+    }
+}
 #elRaptor {
     position: fixed;
     bottom: -600px;
@@ -52,4 +66,11 @@
     z-index: 99999;
     right: 0;
     display:block;
+}
+
+#elNoSoupImg {
+    position:fixed;
+    display : block;
+    z-index : 99999;
+    left: 50%;
 }
