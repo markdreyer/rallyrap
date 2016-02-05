@@ -6,10 +6,9 @@ $(function() {
          * Listener for completing a task.
          */
         viewport.addEventListener('mouseup', function(e) {
-            var isAtnaBoard = $('th:contains("Excelsior!")'),
-                index = $('.rally-drop-indicator').parents('td').index();
+            var index = $('.rally-drop-indicator').parents('td').index();
             console.log('RallyRap: column index=' + index);
-            if (isAtnaBoard && index === 5) {
+            if (index === 5) {
                 raptorize();
             }
         });
