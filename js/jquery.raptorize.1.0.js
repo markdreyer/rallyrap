@@ -112,3 +112,10 @@ function raptorBlock() {
     showImage(chrome.extension.getURL('img/blocked-luke.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
     playSound('elRaptorBlock', chrome.extension.getURL('audio/nooo.mp3'));
 }
+
+/**
+ * Sound to make my day
+ */
+function raptorMakeMyDay() {
+    playSound('elMMD', chrome.extension.getURL('audio/makeMyDay.mp3'));
+}
