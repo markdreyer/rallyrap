@@ -1,4 +1,8 @@
 language: node_js
 node_js:
   - "stable"
-before_install: npm install -g jshint
+before_install:
+  - npm install -g jshint
+  - npm install -g chrome-webstore-manager
+after_success:
+  - chrome-webstore-manager update mkcefhphmjgojfnpdmajoceoekebapbb ./build/rallyrap.zip

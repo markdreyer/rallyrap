@@ -44,7 +44,7 @@ function showImage(imageSrc, imageId, animationClass) {
         image.setAttribute('id', imageId);
         image.setAttribute('src', imageSrc);
         span.appendChild(image);
-        return span
+        return span;
     }
 }
 
