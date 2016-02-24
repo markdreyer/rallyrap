@@ -1,5 +1,7 @@
 # Raptorize for Rally
 
+[![Build Status](https://travis-ci.org/markdreyer/rallyrap.svg?branch=features/travis-ci)](https://travis-ci.org/markdreyer/rallyrap)
+
 A Chrome extension to enable raptorize on any page and a few additions to integrate raptorize into certain Rally actions.
 
 Chrome Extension available at:

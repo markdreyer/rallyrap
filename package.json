@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "test": "jshint --exclude js/jquery.min.js ."
+  }
+}
