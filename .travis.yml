@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "stable"
+npm_args:
+  - "-g"
 script:
   - npm run build
   - npm test
