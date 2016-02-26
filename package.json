@@ -1,5 +1,10 @@
 {
+    "devDependencies": {
+        "jshint": "latest",
+        "archiver": "latest"
+    },
     "scripts": {
+        "build": "node build.js",
         "test": "jshint --exclude js/jquery.min.js ."
   }
 }
