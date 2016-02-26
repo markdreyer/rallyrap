@@ -1,7 +1,8 @@
 {
     "devDependencies": {
         "jshint": "latest",
-        "archiver": "latest"
+        "archiver": "latest",
+        "chrome-webstore-manager": "latest"
     },
     "scripts": {
         "build": "node build.js",
