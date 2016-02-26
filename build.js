@@ -13,5 +13,6 @@ archive.on('error', function(err) {
   throw err;
 });
 archive.pipe(output);
-archive.glob('**/*');
+archive.glob('!(build|node_modules)*');
+archive.glob('!(build|node_modules)/**/*');
 archive.finalize();

@@ -1,11 +1,6 @@
 language: node_js
 node_js:
   - "stable"
-before_install:
-  - npm install -g fs
-  - npm install -g archiver
-  - npm install -g jshint
-  - npm install -g chrome-webstore-manager
 script:
   - npm run build
   - npm test
