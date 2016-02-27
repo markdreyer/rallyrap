@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/markdreyer/rallyrap.svg?branch=features/travis-ci)](https://travis-ci.org/markdreyer/rallyrap)
+[![Build Status](https://travis-ci.org/markdreyer/rallyrap.svg)](https://travis-ci.org/markdreyer/rallyrap)
 
 # Raptorize for Rally
 
