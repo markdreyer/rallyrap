@@ -1,0 +1,12 @@
+{
+    "devDependencies": {
+        "fs": "latest",
+        "jshint": "latest",
+        "archiver": "latest",
+        "chrome-webstore-manager": "latest"
+    },
+    "scripts": {
+        "build": "node build.js",
+        "test": "jshint --exclude js/jquery.min.js ./js"
+  }
+}
