@@ -1,7 +1,14 @@
 var fs = require('fs');
 
-bump();
-createZip();
+if (process.env.TRAVIS_BRANCH === 'master') {
+    console.log('Branch was master');
+    console.log('****Publishing Extension****');
+    bump();
+    createZip();
+} else {
+    console.log('Branch was NOT master');
+    console.log('****SKIP Publish****');
+}
 
 function bump() {
      if (process.argv[2]) {
