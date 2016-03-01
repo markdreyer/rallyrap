@@ -40,7 +40,10 @@ var rallyrapEventsDOM =
                     if (target.hasClass('rly-active') === false)
                     {
                       rallyrapEvents.onStoryBlock();
-                      console.debug('block called');
+
+                    }
+                    else {
+                      rallyrapEvents.onStoryUnBlock();  
                     }
                 }
           });

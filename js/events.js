@@ -15,6 +15,10 @@ var rallyrapEvents = {
       this.executeHooks('onStoryBlock');
     },
 
+    onStoryUnBlock: function()
+    {
+      this.executeHooks('onStoryUnBlock');
+    },
 
     onStoryAssign: function(user)
     {
