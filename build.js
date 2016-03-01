@@ -1,6 +1,9 @@
 var fs = require('fs');
 
-if (process.env.TRAVIS_BRANCH === 'master' && !process.env.TRAVIS_PULL_REQUEST) {
+console.log('PR was:' + process.env.TRAVIS_PULL_REQUEST);
+console.log('Branch was:' + process.env.TRAVIS_BRANCH);
+
+if (process.env.TRAVIS_BRANCH === 'master' && process.env.TRAVIS_PULL_REQUEST === 'false') {
     console.log('Branch was master');
     console.log('****Publishing Extension****');
     bump();
