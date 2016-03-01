@@ -6,15 +6,18 @@ $(function() {
          * Listener for moving a task.
          */
         viewport.addEventListener('mouseup', function(e) {
-            var toIndex = $('.rally-drop-indicator').parents('td').index(),
+            var numberOfColumns = $('.rally-drop-indicator').parents('tr').children('td.card-column').length,
+                toIndex = $('.rally-drop-indicator').parents('td').index(),
                 fromIndex = $('.dragged-card').parents('td').index();
             console.log('RallyRap: column fromIndex=' + fromIndex);
             console.log('RallyRap: column toIndex=' + toIndex);
-            if (toIndex === 5) {
-                raptorize();
-            } else if (toIndex < fromIndex && toIndex >= 0) {
-                //Task moved back
-                raptorNoSoup();
+            if (toIndex >= 0) {
+                if (toIndex === numberOfColumns - 1) {
+                    raptorize();
+                } else if (toIndex < fromIndex) {
+                    //Task moved back
+                    raptorNoSoup();
+                }
             }
         });
 
@@ -47,7 +50,6 @@ $(function() {
       //Assigned a task to Mark
       if ($(this).find('div.x4-boundlist-selected:contains("Mark")')[0]) {
           console.log('RallyRap: Assigned to user: Mark');
-          raptorMakeMyDay();
       }
     });
 

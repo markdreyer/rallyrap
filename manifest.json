@@ -23,8 +23,7 @@
                 "css/rallyrap.css"
             ],
             "matches": [
-                "http://*/*",
-                "https://*/*"
+                "*://*.rallydev.com/*"
             ]
         }
     ],
@@ -40,10 +39,8 @@
     "manifest_version": 2,
     "name": "Raptorize for Rally",
     "permissions": [
-        "webNavigation",
         "activeTab",
-        "http://*/",
-        "https://*/",
+        "*://*.rallydev.com/*",
         "storage"
     ],
     "update_url": "https://clients2.google.com/service/update2/crx",
