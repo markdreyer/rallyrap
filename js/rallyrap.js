@@ -50,7 +50,6 @@ $(function() {
       //Assigned a task to Mark
       if ($(this).find('div.x4-boundlist-selected:contains("Mark")')[0]) {
           console.log('RallyRap: Assigned to user: Mark');
-          raptorMakeMyDay();
       }
     });
 
