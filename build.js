@@ -4,12 +4,10 @@ console.log('PR was:' + process.env.TRAVIS_PULL_REQUEST);
 console.log('Branch was:' + process.env.TRAVIS_BRANCH);
 
 if (process.env.TRAVIS_BRANCH === 'master' && process.env.TRAVIS_PULL_REQUEST === 'false') {
-    console.log('Branch was master');
     console.log('****Publishing Extension****');
     bump();
     createZip();
 } else {
-    console.log('Branch was NOT master');
     console.log('****SKIP Publish****');
 }
 
