@@ -58,10 +58,12 @@ var rallyrapEvents = {
        var filtered = this.filterHooks(eventName,attributes);
 
        for (i = 0; i < filtered.length; i++) {
+         /* jshint ignore:start */
           eval(filtered[i].action);
+          /* jshint ignore:end */
        }
 
     }
 
 
-}
+};

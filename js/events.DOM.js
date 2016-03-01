@@ -39,7 +39,7 @@ var rallyrapEventsDOM =
                     /* If this is not - unblock */
                     if (target.hasClass('rly-active') === false)
                     {
-                      rallyrapEvents.onStoryBlock()
+                      rallyrapEvents.onStoryBlock();
                       console.debug('block called');
                     }
                 }
@@ -55,10 +55,10 @@ var rallyrapEventsDOM =
        if(userField)
        {
           var userName = $(userField).find('span').first().html();
-          rallyrapEvents.onStoryAssign(userName)
+          rallyrapEvents.onStoryAssign(userName);
        }
 
      });
 
   }
-}
+};
