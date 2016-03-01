@@ -23,8 +23,7 @@
                 "css/rallyrap.css"
             ],
             "matches": [
-                "http://*/*",
-                "https://*/*"
+                "*://*.rallydev.com/*"
             ]
         }
     ],
@@ -42,8 +41,7 @@
     "permissions": [
         "webNavigation",
         "activeTab",
-        "http://*/",
-        "https://*/",
+        "*://*.rallydev.com/*",
         "storage"
     ],
     "update_url": "https://clients2.google.com/service/update2/crx",
