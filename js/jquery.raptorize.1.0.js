@@ -108,9 +108,8 @@ function raptorize() {
  * Animation/sound for when a task is blocked.
  *
  */
-function raptorBlock() {
-    showImage(chrome.extension.getURL('img/blocked-luke.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
-    playSound('elRaptorBlock', chrome.extension.getURL('audio/nooo.mp3'));
+function raptorUnBlock() {
+    showImage(chrome.extension.getURL('img/chewy.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
 }
 
 /**
@@ -125,6 +124,9 @@ function raptorNoSoup() {
     playSound('elNoSoup', chrome.extension.getURL('audio/noSoup.mp3'));
 }
 
+function raptorHan() {
+    showImage(chrome.extension.getURL('img/sw-me.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
+}
 
 function raptorTombstone() {
     showImage(chrome.extension.getURL('img/tombstone.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
