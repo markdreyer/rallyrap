@@ -16,6 +16,8 @@
         {
             "js": [
                 "js/jquery.min.js",
+                "js/events.DOM.js",
+                "js/events.js",
                 "js/jquery.raptorize.1.0.js",
                 "js/rallyrap.js"
             ],

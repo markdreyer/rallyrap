@@ -124,3 +124,8 @@ function raptorNoSoup() {
     showImage(chrome.extension.getURL('img/soupNazi.gif'), 'elNoSoupImg', 'peek-down-quick 2s');
     playSound('elNoSoup', chrome.extension.getURL('audio/noSoup.mp3'));
 }
+
+
+function raptorTombstone() {
+    showImage(chrome.extension.getURL('img/tombstone.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
+}
