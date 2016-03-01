@@ -5,17 +5,6 @@ var background = {
             code: 'raptorize()'
           });
         });
-
-        chrome.webNavigation.onCompleted.addListener(function(details) {
-            chrome.tabs.executeScript(details.tabId, {
-                file: 'js/rallyrap.js'
-            });
-        }, {
-            url: [{
-                // Runs on rallydev.com, rallydev.net, but also rallydev.foo.com
-                hostContains: '.rallydev.'
-            }]
-        });
     }
 };
 
