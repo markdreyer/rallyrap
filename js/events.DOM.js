@@ -18,7 +18,7 @@ var rallyrapEventsDOM =
                 toIndex = $('.rally-drop-indicator').parents('td').index(),
                 fromIndex = $('.dragged-card').parents('td').index();
             if (toIndex >= 0) {
-                if (toIndex === numberOfColumns - 1) {
+                if (toIndex === numberOfColumns - 1 && numberOfColumns > 2) {
                     rallyrapEvents.onStoryCompleted();
                 } else if (toIndex < fromIndex) {
                     //Task moved back
