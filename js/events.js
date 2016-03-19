@@ -60,7 +60,7 @@ var rallyrapEvents = {
        var filtered = this.filterHooks(eventName, attributes);
 
        for (i = 0; i < filtered.length; i++) {
-          raptorizeActions[filtered[i].action]();
+          raptorizeActions[filtered[i].action].apply(this, filtered[i].args);
        }
     }
 };

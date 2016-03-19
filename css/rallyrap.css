@@ -60,7 +60,7 @@
     z-index : 99999;
 }
 
-#raptorBlock {
+#raptorizeShowImage {
     position:fixed;
     bottom:  0;
     z-index: 99999;
@@ -68,7 +68,7 @@
     display:block;
 }
 
-#elNoSoupImg {
+#raptorizeShowImageWithSound {
     position:fixed;
     display : block;
     z-index : 99999;
