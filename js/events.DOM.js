@@ -40,22 +40,20 @@ var rallyrapEventsDOM =
                     if (target.hasClass('rly-active') === false)
                     {
                       rallyrapEvents.onStoryBlock();
-
                     }
                     else {
-                      rallyrapEvents.onStoryUnBlock();  
+                      rallyrapEvents.onStoryUnBlock();
                     }
                 }
           });
       }
-
 
       /* Listener for assigning a task to a user.
       */
      $('body').on('click', 'div.rly-popover', function() {
        var userField = $(this).find('div.x4-boundlist-selected')[0];
 
-       if(userField)
+       if (userField)
        {
           var userName = $(userField).find('span').first().html();
           rallyrapEvents.onStoryAssign(userName);

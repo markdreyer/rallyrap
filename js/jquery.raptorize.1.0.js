@@ -8,126 +8,126 @@
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
  */
+var raptorizeActions = {
+    /**
+     * Creates an image on the screen with animation. The image is destroyed
+     * after animation has completed.
+     *
+     * @param  {string} imageSrc URL of the image resource.
+     * @param  {string} imageId Id to use when creating the image tag. This needs to be
+     *                          unique across all of rally's ID's.
+     * @param  {string} animationClass CSS class to use for the animation.
+     */
+    showImage: function(imageSrc, imageId, animationClass) {
+        var imageEl = createImageEl(),
+            noblock = imageEl.querySelector('#' + imageId);
 
-/**
- * Creates an image on the screen with animation. The image is destroyed
- * after animation has completed.
- *
- * @param  {string} imageSrc URL of the image resource.
- * @param  {string} imageId Id to use when creating the image tag. This needs to be
- *                          unique across all of rally's ID's.
- * @param  {string} animationClass CSS class to use for the animation.
- */
-function showImage(imageSrc, imageId, animationClass) {
-    var imageEl = createImageEl(),
-        noblock = imageEl.querySelector('#' + imageId);
+        //Append image
+        document.body.appendChild(imageEl);
 
-    //Append image
-    document.body.appendChild(imageEl);
+        //Dispose image
+        noblock.addEventListener('animationend', function() {
+            document.body.removeChild(imageEl);
+        });
 
-    //Dispose image
-    noblock.addEventListener('animationend', function() {
-        document.body.removeChild(imageEl);
-    });
+        //Animate
+        noblock.style.animation = animationClass;
 
-    //Animate
-    noblock.style.animation = animationClass;
+        /**
+         * Creates a new image element wrapped in a span on the document.
+         * @return {Element} The created span element object.
+         */
+        function createImageEl()
+        {
+            var span = document.createElement('span');
+            var image = document.createElement('img');
+            image.setAttribute('id', imageId);
+            image.setAttribute('src', imageSrc);
+            span.appendChild(image);
+            return span;
+        }
+    },
 
     /**
-     * Creates a new image element wrapped in a span on the document.
-     * @return {Element} The created span element object.
+     * Creates an audio element on the document and plays it.
+     * @param  {string} elementId Identifier of the audio element to be created.
+     * @param  {string[]/string} soundPaths Array of sound paths to use for the source tags. If more than one
+     *                                      source is used, the browser will pick whatever format it likes best.
      */
-    function createImageEl()
-    {
-        var span = document.createElement('span');
-        var image = document.createElement('img');
-        image.setAttribute('id', imageId);
-        image.setAttribute('src', imageSrc);
-        span.appendChild(image);
-        return span;
-    }
-}
+    playSound: function(elementId, soundPaths) {
+        var audio = document.createElement('audio');
 
-/**
- * Creates an audio element on the document and plays it.
- * @param  {string} elementId Identifier of the audio element to be created.
- * @param  {string[]/string} soundPaths Array of sound paths to use for the source tags. If more than one
- *                                      source is used, the browser will pick whatever format it likes best.
- */
-function playSound(elementId, soundPaths) {
-    var audio = document.createElement('audio');
+            audio.setAttribute('id', elementId);
+            audio.setAttribute('preload', 'auto');
 
-        audio.setAttribute('id', elementId);
-        audio.setAttribute('preload', 'auto');
+            if (typeof(soundPaths) === 'string') {
+                soundPaths = [soundPaths];
+            }
 
-        if (typeof(soundPaths) === 'string') {
-            soundPaths = [soundPaths];
-        }
+            for (var i = 0; i < soundPaths.length; i++) {
+                source = document.createElement('source');
+                source.setAttribute('src', soundPaths[i]);
+                audio.appendChild(source);
+            }
 
-        for (var i = 0; i < soundPaths.length; i++) {
-            source = document.createElement('source');
-            source.setAttribute('src', soundPaths[i]);
-            audio.appendChild(source);
-        }
-
-        audio.play();
-}
-
-/**
- * Unleash the Beast!
- */
-function raptorize() {
-
-    //Load config
-    chrome.storage.sync.get({
-        //Defaults
-        useCustomImage: false,
-        useCustomSound: false,
-        imageUrl: '',
-        soundUrl: ''
+            audio.play();
     },
-        /**
-         * Runs the raptorize functionality. This will animate an image and play
-         * a sound.
-         * @param  {object} config Configuration object as returned by chrome storage API.
-         */
-        function run(config) {
-            var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('img/superman.png'),
-                soundUrl = config.useCustomSound ? config.soundUrl :
-                            [chrome.extension.getURL('audio/raptor-sound.mp3'),
-                             chrome.extension.getURL('audio/raptor-sound.ogg')];
 
-            showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
+    /**
+     * Unleash the Beast!
+     */
+    raptorize: function() {
+        //Load config
+        chrome.storage.sync.get({
+            //Defaults
+            useCustomImage: false,
+            useCustomSound: false,
+            imageUrl: '',
+            soundUrl: ''
+        },
+            /**
+             * Runs the raptorize functionality. This will animate an image and play
+             * a sound.
+             * @param  {object} config Configuration object as returned by chrome storage API.
+             */
+            function run(config) {
+                var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL('img/unicorn.jpg'),
+                    soundUrl = config.useCustomSound ? config.soundUrl :
+                                [chrome.extension.getURL('audio/lalala.mp3'),
+                                 chrome.extension.getURL('audio/raptor-sound.ogg')];
 
-            playSound('elRaptorShriek', soundUrl);
-        }
-    );
-}
+                raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
 
-/**
- * Animation/sound for when a task is blocked.
- *
- */
-function raptorUnBlock() {
-    showImage(chrome.extension.getURL('img/chewy.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
-}
+                raptorizeActions.playSound('elRaptorShriek', soundUrl);
+            }
+        );
+    },
 
-/**
- * Sound to make my day
- */
-function raptorMakeMyDay() {
-    playSound('elMMD', chrome.extension.getURL('audio/makeMyDay.mp3'));
-}
+    /**
+     * Animation/sound for when a task is blocked.
+     *
+     */
+    unBlock: function() {
+        raptorizeActions.showImage(chrome.extension.getURL('img/chewy.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
+    },
 
-function raptorNoSoup() {
-    showImage(chrome.extension.getURL('img/soupNazi.gif'), 'elNoSoupImg', 'peek-down-quick 2s');
-    playSound('elNoSoup', chrome.extension.getURL('audio/noSoup.mp3'));
-}
+    /**
+     * Sound to make my day
+     */
+    makeMyDay: function() {
+        raptorizeActions.playSound('elMMD', chrome.extension.getURL('audio/makeMyDay.mp3'));
+    },
 
-function raptorHan() {
-    showImage(chrome.extension.getURL('img/sw-me.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
-}
+    noSoup: function() {
+        raptorizeActions.showImage(chrome.extension.getURL('img/soupNazi.gif'), 'elNoSoupImg', 'peek-down-quick 2s');
+        raptorizeActions.playSound('elNoSoup', chrome.extension.getURL('audio/noSoup.mp3'));
+    },
 
-function raptorTombstone() {
-    showImage(chrome.extension.getURL('img/tombstone.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
-}
+    han: function() {
+        raptorizeActions.showImage(chrome.extension.getURL('img/sw-me.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
+    },
+
+    tombstone: function() {
+        raptorizeActions.showImage(chrome.extension.getURL('img/tombstone.gif'), 'raptorBlock', 'peek-up-fade-out 4s');
+    }
+};

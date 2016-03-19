@@ -9,7 +9,6 @@ var rallyrapEvents = {
         this.hooks = myHooks;
     },
 
-
     onStoryBlock: function()
     {
       this.executeHooks('onStoryBlock');
@@ -25,7 +24,6 @@ var rallyrapEvents = {
       this.executeHooks('onStoryAssign', { user: user });
     },
 
-
     onStoryBackTrack: function()
     {
       this.executeHooks('onStoryBackTrack');
@@ -33,7 +31,7 @@ var rallyrapEvents = {
 
     onStoryCompleted: function()
     {
-      raptorize();
+      this.executeHooks('onStoryCompleted');
     },
 
     filterHooks: function(eventName, attributes)
@@ -41,13 +39,13 @@ var rallyrapEvents = {
       var filtered = [];
 
       for (i = 0; i < this.hooks.length; i++) {
-         if(this.hooks[i].eventName == eventName)
+         if (this.hooks[i].eventName == eventName)
          {
 
-           if(attributes)
+           if (attributes)
            {
-              if(!this.hooks[i].filters) { continue; }
-              if(attributes.user && attributes.user != this.hooks[i].filters.user ) {continue;}
+              if (!this.hooks[i].filters) { continue; }
+              if (attributes.user && attributes.user != this.hooks[i].filters.user) {continue;}
            }
 
            filtered.push(this.hooks[i]);
@@ -59,15 +57,10 @@ var rallyrapEvents = {
 
     executeHooks: function(eventName, attributes)
     {
-       var filtered = this.filterHooks(eventName,attributes);
+       var filtered = this.filterHooks(eventName, attributes);
 
        for (i = 0; i < filtered.length; i++) {
-         /* jshint ignore:start */
-          eval(filtered[i].action);
-          /* jshint ignore:end */
+          raptorizeActions[filtered[i].action]();
        }
-
     }
-
-
 };
