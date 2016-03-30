@@ -3,8 +3,7 @@ $(function() {
     var hooks = [{
         eventName: 'onStoryCompleted',
         action: 'raptorize',
-        args: [chrome.extension.getURL('img/unicorn.png'),
-                chrome.extension.getURL('audio/lalala.mp3')]
+        args: [chrome.extension.getURL('audio/lalala.mp3')]
     }, {
         eventName: 'onStoryUnBlock',
         action: 'showImage',

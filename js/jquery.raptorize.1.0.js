@@ -76,10 +76,11 @@ var raptorizeActions = {
     /**
      * Unleash the Beast!
      */
-    raptorize: function(defaultImageUrl, defaultSoundUrl) {
+    raptorize: function(defaultSoundUrl) {
         //Load config
         chrome.storage.sync.get({
             //Defaults
+            raptorizeImageUrl: raptorizeActions.imageUrls[3],
             useCustomImage: false,
             useCustomSound: false,
             imageUrl: '',
@@ -91,7 +92,12 @@ var raptorizeActions = {
              * @param  {object} config Configuration object as returned by chrome storage API.
              */
             function run(config) {
-                var imageUrl = config.useCustomImage ? config.imageUrl : defaultImageUrl,
+                var raptorizeImageUrl = config.raptorizeImageUrl;
+                if (raptorizeImageUrl === 'random') {
+                    raptorizeImageUrl = raptorizeActions.imageUrls[
+                        Math.floor((Math.random() * raptorizeActions.imageUrls.length))];
+                }
+                var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL(raptorizeImageUrl),
                     //Array of sounds for fallback purposes
                     soundUrl = config.useCustomSound ? config.soundUrl : [defaultSoundUrl];
 
@@ -106,4 +112,11 @@ var raptorizeActions = {
         raptorizeActions.showImage(imageUrl, 'raptorizeShowImageWithSound', cssAnimation);
         raptorizeActions.playSound('elRaptorizeSound', soundUrl);
     },
+
+    imageUrls: [
+        'img/raptor.png',
+        'img/raptor-nye.png',
+        'img/superman.png',
+        'img/unicorn.png'
+    ]
 };
