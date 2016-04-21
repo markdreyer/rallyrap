@@ -80,6 +80,7 @@ var raptorizeActions = {
         //Load config
         chrome.storage.sync.get({
             //Defaults
+            raptorizeAudioUrl: raptorizeActions.audioUrls[1],
             raptorizeImageUrl: raptorizeActions.imageUrls[3],
             useCustomImage: false,
             useCustomSound: false,
@@ -93,13 +94,17 @@ var raptorizeActions = {
              */
             function run(config) {
                 var raptorizeImageUrl = config.raptorizeImageUrl;
+                var raptorizeAudioUrl = defaultSoundUrl;
                 if (raptorizeImageUrl === 'random') {
                     raptorizeImageUrl = raptorizeActions.imageUrls[
                         Math.floor((Math.random() * raptorizeActions.imageUrls.length))];
+                    raptorizeAudioUrl = raptorizeActions.audioUrls[
+                        Math.floor((Math.random() * raptorizeActions.audioUrls.length))];          
                 }
+
                 var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL(raptorizeImageUrl),
                     //Array of sounds for fallback purposes
-                    soundUrl = config.useCustomSound ? config.soundUrl : [defaultSoundUrl];
+                    soundUrl = config.useCustomSound ? config.soundUrl : chrome.extension.getURL(raptorizeAudioUrl);
 
                 raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
 
@@ -118,5 +123,10 @@ var raptorizeActions = {
         'img/raptor-nye.png',
         'img/superman.png',
         'img/unicorn.png'
-    ]
+    ],
+    
+    audioUrls: [
+        'audio/lalala.mp3',
+        'audio/raptor-sound.mp3'
+    ]    
 };

@@ -35,7 +35,7 @@ function restore_options() {
     }, function(items) {
         var raptorImageSelect = document.getElementById('raptorizeImageUrl');
         for (var i = 0; i < raptorImageSelect.length; i++) {
-            if (raptorImageSelect.options[i].value == items.raptorizeImageUrl)
+            if (raptorImageSelect.options[i].value === items.raptorizeImageUrl)
                 raptorImageSelect.selectedIndex = i;
         }
         document.getElementById('useCustomImage').checked = items.useCustomImage;

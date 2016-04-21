@@ -39,13 +39,13 @@ var rallyrapEvents = {
       var filtered = [];
 
       for (i = 0; i < this.hooks.length; i++) {
-         if (this.hooks[i].eventName == eventName)
+         if (this.hooks[i].eventName === eventName)
          {
 
            if (attributes)
            {
               if (!this.hooks[i].filters) { continue; }
-              if (attributes.user && attributes.user != this.hooks[i].filters.user) {continue;}
+              if (attributes.user && attributes.user !== this.hooks[i].filters.user) {continue;}
            }
 
            filtered.push(this.hooks[i]);
