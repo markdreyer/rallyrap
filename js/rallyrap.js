@@ -1,5 +1,7 @@
 $(function() {
 
+   // This is a test
+
     var hooks = [{
         eventName: 'onStoryCompleted',
         action: 'raptorize',
