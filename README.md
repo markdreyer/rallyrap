@@ -17,7 +17,3 @@ http://zurb.com/playground/jquery-raptorize
 Alex Brovkin - for the work on the original chrome extension
 
 http://brovalex.com/2015/01/26/raptorize-for-chrome/
-
-Mark Dreyer - for upkeep of the parent repository
-
-https://github.com/markdreyer/rallyrap
