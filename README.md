@@ -4,7 +4,7 @@
 
 A Chrome extension to enable raptorize on any page and a few additions to integrate raptorize into certain Rally actions.
 
-# Chrome Extension available at:
+Chrome Extension available at:
 
 https://chrome.google.com/webstore/detail/raptorize-for-rally/mkcefhphmjgojfnpdmajoceoekebapbb
 
