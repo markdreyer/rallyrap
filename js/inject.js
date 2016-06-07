@@ -1,11 +1,11 @@
-/*var background = {
+var background = {
     init: function() {
         chrome.browserAction.onClicked.addListener(function(tab) {
           chrome.tabs.executeScript({
-            code: 'rallyrapEvents.executeHooks(\'onStoryCompleted\')'//'raptorize()' //Left-click action
+            code: 'rallyrapEvents.executeHooks(\'onStoryCompleted\')'
           });
         });
     }
 };
 
-background.init();*/
+background.init();

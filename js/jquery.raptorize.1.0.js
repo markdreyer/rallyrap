@@ -129,6 +129,9 @@ var raptorizeActions = {
         'audio/lalala.mp3',
         'audio/raptor-sound.mp3',
 		'audio/airhorn.mp3',
-		'audio/mario.mp3'
+		'audio/mario.mp3',
+		'audio/ghostbusters.mp3',
+		'audio/wytbw.mp3',
+		'audio/ateam.mp3'
     ]    
 };

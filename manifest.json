@@ -10,8 +10,7 @@
         "icons": [
             "img/icon.png"
         ],
-        "name": "Rally Raptorize",
-		"popup": "html/popup.html"
+        "name": "Rally Raptorize"
     },
     "content_scripts": [
         {

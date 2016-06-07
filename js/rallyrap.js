@@ -3,7 +3,7 @@ $(function() {
     var hooks = [{
         eventName: 'onStoryCompleted',
         action: 'raptorize',
-        args: ['audio/lalala.mp3'] //Hard-coded sound
+        args: ['audio/lalala.mp3']
     }, {
         eventName: 'onStoryUnBlock',
         action: 'showImage',
