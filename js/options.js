@@ -1,8 +1,11 @@
 // Saves options to chrome.storage.sync.
 function save_options() {
     var raptorizeImageUrlSelect = document.getElementById('raptorizeImageUrl');
+	var raptorizeAudioUrlSelect = document.getElementById('raptorizeAudioUrl');
     var raptorizeImageUrlIndex = raptorizeImageUrlSelect.selectedIndex;
+	var raptorizeAudioUrlIndex = raptorizeAudioUrlSelect.selectedIndex;
     var raptorizeImageUrl = raptorizeImageUrlSelect.options[raptorizeImageUrlIndex].value;
+	var raptorizeAudioUrl = raptorizeAudioUrlSelect.options[raptorizeAudioUrlIndex].value;
 
     var useCustomImage = document.getElementById('useCustomImage').checked;
     var imageUrl = document.getElementById('imageUrl').value;
@@ -10,6 +13,7 @@ function save_options() {
     var soundUrl = document.getElementById('soundUrl').value;
     chrome.storage.sync.set({
         raptorizeImageUrl: raptorizeImageUrl,
+		raptorizeAudioUrl: raptorizeAudioUrl,
         useCustomImage: useCustomImage,
         useCustomSound: useCustomSound,
         imageUrl: imageUrl,
@@ -28,6 +32,7 @@ function restore_options() {
     chrome.storage.sync.get({
         //Defaults
         raptorizeImageUrl: '',
+		raptorizeAudioUrl: '',
         useCustomImage: false,
         useCustomSound: false,
         imageUrl: '',
@@ -37,6 +42,11 @@ function restore_options() {
         for (var i = 0; i < raptorImageSelect.length; i++) {
             if (raptorImageSelect.options[i].value === items.raptorizeImageUrl)
                 raptorImageSelect.selectedIndex = i;
+        }
+		var raptorAudioSelect = document.getElementById('raptorizeAudioUrl');
+        for (var j = 0; j < raptorAudioSelect.length; j++) {
+            if (raptorAudioSelect.options[j].value === items.raptorizeAudioUrl)
+                raptorAudioSelect.selectedIndex = j;
         }
         document.getElementById('useCustomImage').checked = items.useCustomImage;
         document.getElementById('imageUrl').value = items.imageUrl;

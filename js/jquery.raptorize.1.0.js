@@ -80,7 +80,7 @@ var raptorizeActions = {
         //Load config
         chrome.storage.sync.get({
             //Defaults
-            raptorizeAudioUrl: raptorizeActions.audioUrls[1],
+            raptorizeAudioUrl: defaultSoundUrl,
             raptorizeImageUrl: raptorizeActions.imageUrls[3],
             useCustomImage: false,
             useCustomSound: false,
@@ -94,19 +94,27 @@ var raptorizeActions = {
              */
             function run(config) {
                 var raptorizeImageUrl = config.raptorizeImageUrl;
-                var raptorizeAudioUrl = defaultSoundUrl;
+                var raptorizeAudioUrl = config.raptorizeAudioUrl;
                 if (raptorizeImageUrl === 'random') {
                     raptorizeImageUrl = raptorizeActions.imageUrls[
-                        Math.floor((Math.random() * raptorizeActions.imageUrls.length))];
-                    raptorizeAudioUrl = raptorizeActions.audioUrls[
-                        Math.floor((Math.random() * raptorizeActions.audioUrls.length))];          
+                        Math.floor((Math.random() * raptorizeActions.imageUrls.length))];         
                 }
+				if (raptorizeAudioUrl === 'random') {
+					raptorizeAudioUrl = raptorizeActions.audioUrls[
+                        Math.floor((Math.random() * raptorizeActions.audioUrls.length))]; 
+				}
 
                 var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL(raptorizeImageUrl),
                     //Array of sounds for fallback purposes
                     soundUrl = config.useCustomSound ? config.soundUrl : chrome.extension.getURL(raptorizeAudioUrl);
 
-                raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
+				//Longer audio needs longer animation
+				if (raptorizeAudioUrl === 'audio/ateam.mp3') {
+					raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 12s');
+				} else {
+					raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
+				}
+                
 
                 raptorizeActions.playSound('elRaptorShriek', soundUrl);
             }
@@ -122,11 +130,17 @@ var raptorizeActions = {
         'img/raptor.png',
         'img/raptor-nye.png',
         'img/superman.png',
-        'img/unicorn.png'
+        'img/unicorn.png',
+		'img/jimmy_mcmillan.jpg'
     ],
     
     audioUrls: [
         'audio/lalala.mp3',
-        'audio/raptor-sound.mp3'
+        'audio/raptor-sound.mp3',
+		'audio/airhorn.mp3',
+		'audio/mario.mp3',
+		'audio/ghostbusters.mp3',
+		'audio/wytbw.mp3',
+		'audio/ateam.mp3'
     ]    
 };
