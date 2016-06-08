@@ -1,6 +1,6 @@
 // Saves options to chrome.storage.sync.
 function save_options() {
-    var raptorizeImageUrlSelect = document.getElementById('raptorizeImageUrl')
+    var raptorizeImageUrlSelect = document.getElementById('raptorizeImageUrl');
 	var raptorizeAudioUrlSelect = document.getElementById('raptorizeAudioUrl');
     var raptorizeImageUrlIndex = raptorizeImageUrlSelect.selectedIndex;
 	var raptorizeAudioUrlIndex = raptorizeAudioUrlSelect.selectedIndex;
@@ -44,9 +44,9 @@ function restore_options() {
                 raptorImageSelect.selectedIndex = i;
         }
 		var raptorAudioSelect = document.getElementById('raptorizeAudioUrl');
-        for (var i = 0; i < raptorAudioSelect.length; i++) {
-            if (raptorAudioSelect.options[i].value === items.raptorizeAudioUrl)
-                raptorAudioSelect.selectedIndex = i;
+        for (var j = 0; j < raptorAudioSelect.length; j++) {
+            if (raptorAudioSelect.options[j].value === items.raptorizeAudioUrl)
+                raptorAudioSelect.selectedIndex = j;
         }
         document.getElementById('useCustomImage').checked = items.useCustomImage;
         document.getElementById('imageUrl').value = items.imageUrl;
