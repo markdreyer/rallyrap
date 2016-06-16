@@ -8,8 +8,5 @@
   "scripts": {
     "build": "node build.js",
     "test": "jshint --exclude js/jquery.min.js ./js"
-  },
-  "dependencies": {
-    "archiver": "^1.0.0"
   }
 }
