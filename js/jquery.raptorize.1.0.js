@@ -111,7 +111,7 @@ var raptorizeActions = {
 
 				//Longer audio needs longer animation
 				if (raptorizeImageUrl.includes('meme')) {
-					raptorizeActions.showImage(imageUrl, 'elRaptor', 'peek-up-fade-out 8s');
+					raptorizeActions.showImage(imageUrl, 'elRaptor', 'peek-up-fade-out 6s');
 				} else if (raptorizeAudioUrl === 'audio/ateam.mp3') {
 					raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 12s');
 				} else {
