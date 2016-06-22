@@ -95,6 +95,7 @@ var raptorizeActions = {
             function run(config) {
                 var raptorizeImageUrl = config.raptorizeImageUrl;
                 var raptorizeAudioUrl = config.raptorizeAudioUrl;
+				
                 if (raptorizeImageUrl === 'random') {
                     raptorizeImageUrl = raptorizeActions.imageUrls[
                         Math.floor((Math.random() * raptorizeActions.imageUrls.length))];         
@@ -109,7 +110,9 @@ var raptorizeActions = {
                     soundUrl = config.useCustomSound ? config.soundUrl : chrome.extension.getURL(raptorizeAudioUrl);
 
 				//Longer audio needs longer animation
-				if (raptorizeAudioUrl === 'audio/ateam.mp3') {
+				if (raptorizeImageUrl.includes('meme')) {
+					raptorizeActions.showImage(imageUrl, 'elRaptor', 'peek-up-fade-out 6s');
+				} else if (raptorizeAudioUrl === 'audio/ateam.mp3') {
 					raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 12s');
 				} else {
 					raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
@@ -131,7 +134,9 @@ var raptorizeActions = {
         'img/raptor-nye.png',
         'img/superman.png',
         'img/unicorn.png',
-		'img/jimmy_mcmillan.jpg'
+		'img/jimmy_mcmillan.jpg',
+		'img/hulkhogan.gif',
+		'img/catmeme.jpg'
     ],
     
     audioUrls: [
