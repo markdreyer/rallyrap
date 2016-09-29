@@ -8,7 +8,6 @@ Chrome Extension available at:
 
 https://chrome.google.com/webstore/detail/raptorize-for-rally/mkcefhphmjgojfnpdmajoceoekebapbb
 
-
 Special thanks to:
 
 Zurb Studios - for creating the initial jquery plugin
