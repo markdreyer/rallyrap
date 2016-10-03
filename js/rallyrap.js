@@ -7,9 +7,9 @@ $(function() {
     }, {
         eventName: 'onStoryUnBlock',
         action: 'showImage',
-        args: [chrome.extension.getURL('img/chewy.gif'),
+        args: [chrome.extension.getURL('img/TurboSnail.gif'),
                 'raptorizeShowImage',
-                'peek-up-fade-out 4s']
+                'peek-up-fade-out 9s']
     }, {
         eventName: 'onStoryAssign',
         action: 'showImage',
