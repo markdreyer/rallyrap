@@ -1,11 +1,11 @@
 // Saves options to chrome.storage.sync.
 function save_options() {
     var raptorizeImageUrlSelect = document.getElementById('raptorizeImageUrl');
-	var raptorizeAudioUrlSelect = document.getElementById('raptorizeAudioUrl');
+    var raptorizeAudioUrlSelect = document.getElementById('raptorizeAudioUrl');
     var raptorizeImageUrlIndex = raptorizeImageUrlSelect.selectedIndex;
-	var raptorizeAudioUrlIndex = raptorizeAudioUrlSelect.selectedIndex;
+    var raptorizeAudioUrlIndex = raptorizeAudioUrlSelect.selectedIndex;
     var raptorizeImageUrl = raptorizeImageUrlSelect.options[raptorizeImageUrlIndex].value;
-	var raptorizeAudioUrl = raptorizeAudioUrlSelect.options[raptorizeAudioUrlIndex].value;
+    var raptorizeAudioUrl = raptorizeAudioUrlSelect.options[raptorizeAudioUrlIndex].value;
 
     var useCustomImage = document.getElementById('useCustomImage').checked;
     var imageUrl = document.getElementById('imageUrl').value;
@@ -13,7 +13,7 @@ function save_options() {
     var soundUrl = document.getElementById('soundUrl').value;
     chrome.storage.sync.set({
         raptorizeImageUrl: raptorizeImageUrl,
-		raptorizeAudioUrl: raptorizeAudioUrl,
+        raptorizeAudioUrl: raptorizeAudioUrl,
         useCustomImage: useCustomImage,
         useCustomSound: useCustomSound,
         imageUrl: imageUrl,
@@ -21,9 +21,9 @@ function save_options() {
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
-		status.style.color = 'green';
+        status.style.color = 'green';
         setTimeout(function() {
-			status.style.color = 'white';
+            status.style.color = 'white';
         }, 1000);
     });
 }
@@ -32,7 +32,7 @@ function restore_options() {
     chrome.storage.sync.get({
         //Defaults
         raptorizeImageUrl: '',
-		raptorizeAudioUrl: '',
+        raptorizeAudioUrl: '',
         useCustomImage: false,
         useCustomSound: false,
         imageUrl: '',
@@ -43,7 +43,7 @@ function restore_options() {
             if (raptorImageSelect.options[i].value === items.raptorizeImageUrl)
                 raptorImageSelect.selectedIndex = i;
         }
-		var raptorAudioSelect = document.getElementById('raptorizeAudioUrl');
+        var raptorAudioSelect = document.getElementById('raptorizeAudioUrl');
         for (var j = 0; j < raptorAudioSelect.length; j++) {
             if (raptorAudioSelect.options[j].value === items.raptorizeAudioUrl)
                 raptorAudioSelect.selectedIndex = j;
