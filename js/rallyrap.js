@@ -14,16 +14,6 @@ var rallyrapDefaultHooks =
     }, {
         id: 3,
         eventName: 'onStoryAssign',
-        action: 'showImage',
-        filters: {
-            user: 'Mark Dreyer'
-        },
-        args: [chrome.extension.getURL('img/datayes.gif'),
-                'raptorizeShowImage',
-                'peek-up-fade-out 4s']
-    }, {
-        id: 4,
-        eventName: 'onStoryAssign',
         action: 'showImageWithSound',
         filters: {
             user: 'Hunter Parks'
@@ -32,7 +22,7 @@ var rallyrapDefaultHooks =
                chrome.extension.getURL('audio/gitrdone.mp3'),
                 'peek-up-fade-out 4s']
     }, {
-        id: 5,
+        id: 4,
         eventName: 'onStoryAssign',
         action: 'showImage',
         filters: {
@@ -42,7 +32,7 @@ var rallyrapDefaultHooks =
                 'raptorizeShowImage',
                 'peek-up-fade-out 4s']
     }, {
-        id: 6,
+        id: 5,
         eventName: 'onStoryAssign',
         action: 'showImage',
         filters: {
@@ -51,14 +41,20 @@ var rallyrapDefaultHooks =
         args: [chrome.extension.getURL('img/sw-me.gif'),
                 'raptorizeShowImage',
                 'peek-up-fade-out 4s']
-    }, {
-        id: 7,
-        eventName: 'onStoryBackTrack',
-        action: 'showImageWithSound',
-        args: [chrome.extension.getURL('img/soupNazi.gif'),
-               chrome.extension.getURL('audio/noSoup.mp3'),
-               'peek-down-quick 2s']
     }];
 
-rallyrapEventsDOM.init();
-rallyrapEvents.initHooks(rallyrapDefaultHooks);
+//Initialize Rallyrap
+chrome.storage.sync.get({
+        //Defaults
+        customHooksFile: ''
+    }, function(items) {
+
+        rallyrapEventsDOM.init();
+        if (items.customHooksFile) {
+            rallyrapEvents.initHooks(JSON.parse(items.customHooksFile));
+        } else {
+            rallyrapEvents.initHooks(rallyrapDefaultHooks);
+        }
+
+    });
+

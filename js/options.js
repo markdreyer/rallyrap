@@ -4,23 +4,31 @@ function save_options() {
     var raptorizeAudioUrlSelect = document.getElementById('raptorizeAudioUrl');
     var raptorizeImageUrlIndex = raptorizeImageUrlSelect.selectedIndex;
     var raptorizeAudioUrlIndex = raptorizeAudioUrlSelect.selectedIndex;
-    var raptorizeImageUrl = raptorizeImageUrlSelect.options[raptorizeImageUrlIndex].value;
-    var raptorizeAudioUrl = raptorizeAudioUrlSelect.options[raptorizeAudioUrlIndex].value;
+    var customHooksFile = document.getElementById('customHooksFile').value;
 
-    var useCustomImage = document.getElementById('useCustomImage').checked;
-    var imageUrl = document.getElementById('imageUrl').value;
-    var useCustomSound = document.getElementById('useCustomSound').checked;
-    var soundUrl = document.getElementById('soundUrl').value;
+    if (customHooksFile) {
+        try {
+            JSON.parse(customHooksFile);
+        } catch (err) {
+            var status = document.getElementById('status');
+            status.innerHTML = 'Do you even JSON, bra? I need valid JSON for custom hooks.';
+            status.style.color = 'red';
+            return false;
+        }
+    }
+
     chrome.storage.sync.set({
-        raptorizeImageUrl: raptorizeImageUrl,
-        raptorizeAudioUrl: raptorizeAudioUrl,
-        useCustomImage: useCustomImage,
-        useCustomSound: useCustomSound,
-        imageUrl: imageUrl,
-        soundUrl: soundUrl
+        raptorizeImageUrl: raptorizeImageUrlSelect.options[raptorizeImageUrlIndex].value,
+        raptorizeAudioUrl: raptorizeAudioUrlSelect.options[raptorizeAudioUrlIndex].value,
+        useCustomImage: document.getElementById('useCustomImage').checked,
+        useCustomSound: document.getElementById('useCustomSound').checked,
+        imageUrl: document.getElementById('imageUrl').value,
+        soundUrl: document.getElementById('soundUrl').value,
+        customHooksFile: customHooksFile
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
+        status.innerHTML = 'Options saved.';
         status.style.color = 'green';
         setTimeout(function() {
             status.style.color = 'white';
@@ -36,7 +44,8 @@ function restore_options() {
         useCustomImage: false,
         useCustomSound: false,
         imageUrl: '',
-        soundUrl: ''
+        soundUrl: '',
+        customHooksFile: ''
     }, function(items) {
         var raptorImageSelect = document.getElementById('raptorizeImageUrl');
         for (var i = 0; i < raptorImageSelect.length; i++) {
@@ -52,7 +61,9 @@ function restore_options() {
         document.getElementById('imageUrl').value = items.imageUrl;
         document.getElementById('useCustomSound').checked = items.useCustomSound;
         document.getElementById('soundUrl').value = items.soundUrl;
+        document.getElementById('customHooksFile').value = items.customHooksFile;
     });
 }
+
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
