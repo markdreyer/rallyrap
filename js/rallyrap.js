@@ -1,16 +1,18 @@
-$(function() {
-
-    var hooks = [{
+var rallyrapDefaultHooks =
+    [{
+        id: 1,
         eventName: 'onStoryCompleted',
         action: 'raptorize',
         args: ['audio/lalala.mp3']
     }, {
+        id: 2,
         eventName: 'onStoryUnBlock',
         action: 'showImage',
         args: [chrome.extension.getURL('img/TurboSnail.gif'),
                 'raptorizeShowImage',
                 'peek-up-fade-out 9s']
     }, {
+        id: 3,
         eventName: 'onStoryAssign',
         action: 'showImage',
         filters: {
@@ -20,6 +22,7 @@ $(function() {
                 'raptorizeShowImage',
                 'peek-up-fade-out 4s']
     }, {
+        id: 4,
         eventName: 'onStoryAssign',
         action: 'showImageWithSound',
         filters: {
@@ -29,6 +32,7 @@ $(function() {
                chrome.extension.getURL('audio/gitrdone.mp3'),
                 'peek-up-fade-out 4s']
     }, {
+        id: 5,
         eventName: 'onStoryAssign',
         action: 'showImage',
         filters: {
@@ -38,6 +42,7 @@ $(function() {
                 'raptorizeShowImage',
                 'peek-up-fade-out 4s']
     }, {
+        id: 6,
         eventName: 'onStoryAssign',
         action: 'showImage',
         filters: {
@@ -47,6 +52,7 @@ $(function() {
                 'raptorizeShowImage',
                 'peek-up-fade-out 4s']
     }, {
+        id: 7,
         eventName: 'onStoryBackTrack',
         action: 'showImageWithSound',
         args: [chrome.extension.getURL('img/soupNazi.gif'),
@@ -54,7 +60,5 @@ $(function() {
                'peek-down-quick 2s']
     }];
 
-    rallyrapEventsDOM.init();
-    rallyrapEvents.initHooks(hooks);
-}
-);
+rallyrapEventsDOM.init();
+rallyrapEvents.initHooks(rallyrapDefaultHooks);

@@ -1,5 +1,4 @@
 
-
 var rallyrapEvents = {
 
     hooks: [],
@@ -62,5 +61,36 @@ var rallyrapEvents = {
        for (i = 0; i < filtered.length; i++) {
           raptorizeActions[filtered[i].action].apply(this, filtered[i].args);
        }
+    },
+    addHook: function(newHook) {
+        var maxId = 0;
+
+        this.hooks.forEach(function(item, index, array) {
+            if (item.id > maxId) maxId = item.id;
+        });
+
+        newHook.id = maxId++;
+
+        this.hooks.push(newHook);
+    },
+    deleteHook: function(hookId) {
+      var hookIndex = this.getHookIndexById(hookId);
+        if (hookIndex > -1) {
+            console.log('Deleted Hook:');
+            console.log(this.hooks.splice(hookIndex, 1));
+        } else {
+          console.log('Warning: tried to delete hook, but it was not found: hookId:' + hookId);
+        }
+    },
+
+    getHookIndexById: function(hookId) {
+      var foundIndex = -1;
+        for (var i = 0, len = this.hooks.length; i < len; i++) {
+          if (this.hooks[i].id === hookId) {
+              foundIndex = i;
+              break;
+          }
+        }
+        return foundIndex;
     }
 };
