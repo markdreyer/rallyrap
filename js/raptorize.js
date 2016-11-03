@@ -95,29 +95,28 @@ var raptorizeActions = {
             function run(config) {
                 var raptorizeImageUrl = config.raptorizeImageUrl;
                 var raptorizeAudioUrl = config.raptorizeAudioUrl;
-				
+
                 if (raptorizeImageUrl === 'random') {
                     raptorizeImageUrl = raptorizeActions.imageUrls[
-                        Math.floor((Math.random() * raptorizeActions.imageUrls.length))];         
+                        Math.floor((Math.random() * raptorizeActions.imageUrls.length))];
                 }
-				if (raptorizeAudioUrl === 'random') {
-					raptorizeAudioUrl = raptorizeActions.audioUrls[
-                        Math.floor((Math.random() * raptorizeActions.audioUrls.length))]; 
-				}
+                if (raptorizeAudioUrl === 'random') {
+                    raptorizeAudioUrl = raptorizeActions.audioUrls[
+                        Math.floor((Math.random() * raptorizeActions.audioUrls.length))];
+                }
 
                 var imageUrl = config.useCustomImage ? config.imageUrl : chrome.extension.getURL(raptorizeImageUrl),
                     //Array of sounds for fallback purposes
                     soundUrl = config.useCustomSound ? config.soundUrl : chrome.extension.getURL(raptorizeAudioUrl);
 
-				//Longer audio needs longer animation
-				if (raptorizeImageUrl.includes('meme')) {
-					raptorizeActions.showImage(imageUrl, 'elRaptor', 'peek-up-fade-out 6s');
-				} else if (raptorizeAudioUrl === 'audio/ateam.mp3') {
-					raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 12s');
-				} else {
-					raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
-				}
-                
+                //Longer audio needs longer animation
+                if (raptorizeImageUrl.includes('meme')) {
+                    raptorizeActions.showImage(imageUrl, 'elRaptor', 'peek-up-fade-out 6s');
+                } else if (raptorizeAudioUrl === 'audio/ateam.mp3') {
+                    raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 12s');
+                } else {
+                    raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
+                }
 
                 raptorizeActions.playSound('elRaptorShriek', soundUrl);
             }
@@ -134,18 +133,18 @@ var raptorizeActions = {
         'img/raptor-nye.png',
         'img/superman.png',
         'img/unicorn.png',
-		'img/jimmy_mcmillan.jpg',
-		'img/hulkhogan.gif',
-		'img/catmeme.jpg'
+        'img/jimmy_mcmillan.jpg',
+        'img/hulkhogan.gif',
+        'img/catmeme.jpg'
     ],
-    
+
     audioUrls: [
         'audio/lalala.mp3',
         'audio/raptor-sound.mp3',
-		'audio/airhorn.mp3',
-		'audio/mario.mp3',
-		'audio/ghostbusters.mp3',
-		'audio/wytbw.mp3',
-		'audio/ateam.mp3'
-    ]    
+        'audio/airhorn.mp3',
+        'audio/mario.mp3',
+        'audio/ghostbusters.mp3',
+        'audio/wytbw.mp3',
+        'audio/ateam.mp3'
+    ]
 };

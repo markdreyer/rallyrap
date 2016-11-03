@@ -3,7 +3,7 @@ var background = {
         chrome.browserAction.onClicked.addListener(function(tab) {
           chrome.tabs.executeScript({
             code: 'try {' +
-                    'rallyrapEvents.executeHooks(\'onStoryCompleted\');' + 
+                    'rallyrapEvents.executeHooks(\'onStoryCompleted\');' +
                   '} catch(err) {' +
                     'window.alert(\"Raptorize for Rally: Please reload the current page.\");' +
                   '}'
@@ -13,3 +13,4 @@ var background = {
 };
 
 background.init();
+
