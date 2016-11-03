@@ -9,7 +9,7 @@ var rallyrapDefaultHooks =
         eventName: 'onStoryUnBlock',
         action: 'showImage',
         args: [chrome.extension.getURL('img/TurboSnail.gif'),
-                'raptorizeShowImage',
+                'rallyrapImageId-2',
                 'peek-up-fade-out 9s']
     }, {
         id: 3,
@@ -29,7 +29,7 @@ var rallyrapDefaultHooks =
             user: 'Mark Snyder'
         },
         args: [chrome.extension.getURL('img/tombstone.gif'),
-                'raptorizeShowImage',
+                'rallyrapImageId-4',
                 'peek-up-fade-out 4s']
     }, {
         id: 5,
@@ -39,7 +39,7 @@ var rallyrapDefaultHooks =
             user: 'Jason VonRuden'
         },
         args: [chrome.extension.getURL('img/sw-me.gif'),
-                'raptorizeShowImage',
+                'rallyrapImageId-5',
                 'peek-up-fade-out 4s']
     }];
 
