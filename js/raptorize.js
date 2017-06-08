@@ -109,20 +109,22 @@ var raptorizeActions = {
                     //Array of sounds for fallback purposes
                     soundUrl = config.useCustomSound ? config.soundUrl : chrome.extension.getURL(raptorizeAudioUrl);
 
-                //Longer audio needs longer animation
-                if (raptorizeImageUrl.includes('meme')) {
-                    raptorizeActions.showImage(imageUrl, 'elRaptor', 'peek-up-fade-out 6s');
-                } else if (raptorizeAudioUrl === 'audio/ateam.mp3') {
-                    raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 12s');
-                } else {
-                    raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
-                }
-
                 raptorizeActions.playSound('elRaptorShriek', soundUrl);
+                raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
             }
         );
     },
 
+    showRandomImageAndSound: function(imageUrls, audioUrls) {
+        var imageUrl = imageUrls[Math.floor((Math.random() * imageUrls.length))],
+            soundUrl = audioUrls[Math.floor((Math.random() * audioUrls.length))];
+
+        if(!soundUrl.startsWith('http')) {
+            soundUrl = chrome.extension.getURL(soundUrl)
+        }
+        raptorizeActions.playSound('elRaptorShriek', soundUrl);
+        raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
+    },
     showImageWithSound: function(imageUrl, soundUrl, cssAnimation) {
         raptorizeActions.showImage(imageUrl, 'raptorizeShowImageWithSound', cssAnimation);
         raptorizeActions.playSound('elRaptorizeSound', soundUrl);
@@ -145,6 +147,7 @@ var raptorizeActions = {
         'audio/mario.mp3',
         'audio/ghostbusters.mp3',
         'audio/wytbw.mp3',
-        'audio/ateam.mp3'
+        'audio/ateam.mp3',
+        'audio/cheers.mp3'
     ]
 };
