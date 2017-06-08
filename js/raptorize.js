@@ -120,7 +120,7 @@ var raptorizeActions = {
             soundUrl = audioUrls[Math.floor((Math.random() * audioUrls.length))];
 
         if(!soundUrl.startsWith('http')) {
-            soundUrl = chrome.extension.getURL(soundUrl)
+            soundUrl = chrome.extension.getURL(soundUrl);
         }
         raptorizeActions.playSound('elRaptorShriek', soundUrl);
         raptorizeActions.showImage(imageUrl, 'elRaptor', 'up-and-over 4s');
