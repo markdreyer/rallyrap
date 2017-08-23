@@ -137,6 +137,7 @@ var raptorizeActions = {
         'img/unicorn.png',
         'img/jimmy_mcmillan.jpg',
         'img/hulkhogan.gif',
+        'img/OnceInLifetime.gif',
         'img/catmeme.jpg'
     ],
 
@@ -148,6 +149,7 @@ var raptorizeActions = {
         'audio/ghostbusters.mp3',
         'audio/wytbw.mp3',
         'audio/ateam.mp3',
+        'audio/OnceInLifetime.mp3',
         'audio/cheers.mp3'
     ]
 };
