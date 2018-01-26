@@ -47,7 +47,7 @@ var rallyrapDefaultHooks =
 chrome.storage.sync.get({
         //Defaults
         customHooksFile: '',
-        useAgeAccentuator: true,
+        useAgeAccentuator: false,
         ageBreakPoints: "5,10,15,20"
     }, function(items) {
 
