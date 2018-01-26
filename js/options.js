@@ -48,7 +48,7 @@ function restore_options() {
         imageUrl: '',
         soundUrl: '',
         customHooksFile: '',
-        useAgeAccentuator: true,
+        useAgeAccentuator: false,
         ageBreakPoints: "5,10,15,20"
     }, function(items) {
         var raptorImageSelect = document.getElementById('raptorizeImageUrl');
