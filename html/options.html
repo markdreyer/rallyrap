@@ -1,100 +1,156 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Rally Raptor Options</title>
   <style>
-    body: { padding: 15px; }
+    body: {
+      padding: 15px;
+    }
+
     #customHooksFile {
       height: 200px;
       width: 500px;
     }
-    a.tooltip {outline:none; }
-    a.tooltip strong {line-height:30px;}
-    a.tooltip:hover {text-decoration:none;}
-    a.tooltip span {
-        z-index:99;display:none; padding:14px 20px;
-        margin-top:-30px; margin-left:28px;
-        width:400px; line-height:16px;
+
+    a.tooltip {
+      outline: none;
     }
-    a.tooltip:hover span{
-        top: 50px;
-        left: 50px;
-        display:inline; position:absolute; color:#111;
-        border:1px solid #DCA; background:#fffAF0;}
-    a.tooltip span
-    {
-        border-radius:4px;
-        box-shadow: 5px 5px 8px #CCC;
+
+    a.tooltip strong {
+      line-height: 30px;
+    }
+
+    a.tooltip:hover {
+      text-decoration: none;
+    }
+
+    a.tooltip span {
+      z-index: 99;
+      display: none;
+      padding: 14px 20px;
+      margin-top: -30px;
+      margin-left: 28px;
+      width: 400px;
+      line-height: 16px;
+    }
+
+    a.tooltip:hover span {
+      top: 50px;
+      left: 50px;
+      display: inline;
+      position: absolute;
+      color: #111;
+      border: 1px solid #DCA;
+      background: #fffAF0;
+    }
+
+    a.tooltip span {
+      border-radius: 4px;
+      box-shadow: 5px 5px 8px #CCC;
     }
   </style>
 </head>
 
 <body>
-<p>
-<label>Raptorize Image:</label>
-<select id="raptorizeImageUrl">
-  <option value="img/unicorn.png">Unicorn</option>
-  <option value="random">RANDOM</option>
-  <option value="img/raptor.png">Raptor</option>
-  <option value="img/raptor-nye.png">Raptor NYE</option>
-  <option value="img/superman.png">Superman</option>
-  <option value="img/jimmy_mcmillan.jpg">Jimmy McMillan</option>
-  <option value="img/hulkhogan.gif">Hulk Hogan</option>
-  <option value="img/catmeme.jpg">Demanding Cat</option>
-  <option value="img/OnceInLifetime.gif">Once In A Lifetime</option>
-</select>
-</p>
-<p>
-<label>Raptorize Audio:</label>
-<select id="raptorizeAudioUrl">
-  <option value="audio/lalala.mp3">Lalala</option>
-  <option value="random">RANDOM</option>
-  <option value="audio/airhorn.mp3">Airhorn</option>
-  <option value="audio/mario.mp3">Mario</option>
-  <option value="audio/ghostbusters.mp3">Ghostbusters</option>
-  <option value="audio/wytbw.mp3">Gary Coleman</option>
-  <option value="audio/ateam.mp3">A-Team</option>
-  <option value="audio/OnceInLifetime.mp3">Once In A Lifetime</option>
-</select>
-</p>
-<p>
-<label>
-      <input type="checkbox" id="useCustomImage">
-      Use Custom Image.
+  <p>
+    <label>Raptorize Image:</label>
+    <select id="raptorizeImageUrl">
+      <option value="img/unicorn.png">Unicorn</option>
+      <option value="random">RANDOM</option>
+      <option value="img/raptor.png">Raptor</option>
+      <option value="img/raptor-nye.png">Raptor NYE</option>
+      <option value="img/superman.png">Superman</option>
+      <option value="img/jimmy_mcmillan.jpg">Jimmy McMillan</option>
+      <option value="img/hulkhogan.gif">Hulk Hogan</option>
+      <option value="img/catmeme.jpg">Demanding Cat</option>
+      <option value="img/OnceInLifetime.gif">Once In A Lifetime</option>
+    </select>
+  </p>
+  <p>
+    <label>Raptorize Audio:</label>
+    <select id="raptorizeAudioUrl">
+      <option value="audio/lalala.mp3">Lalala</option>
+      <option value="random">RANDOM</option>
+      <option value="audio/airhorn.mp3">Airhorn</option>
+      <option value="audio/mario.mp3">Mario</option>
+      <option value="audio/ghostbusters.mp3">Ghostbusters</option>
+      <option value="audio/wytbw.mp3">Gary Coleman</option>
+      <option value="audio/ateam.mp3">A-Team</option>
+      <option value="audio/OnceInLifetime.mp3">Once In A Lifetime</option>
+    </select>
+  </p>
+  <p>
+    <span>
+      <label>
+        <input type="checkbox" id="useCustomImage"> Use Custom Image.
+      </label>
+    </span>
+    <span>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label>Custom Image URL:
+        <input type="text" id="imageUrl">
+      </label>
+    </span>
+  </p>
+  <p>
+    <span>
+      <label>
+        <input type="checkbox" id="useCustomSound"> Use Custom Sound.</label>
+    </span>
+    <span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label>Custom Sound URL:
+        <input type="text" id="soundUrl">
+      </label>
+    </span>
+  </p>
+  <p>
+      <span>
+          <label>
+            <input type="checkbox" id="useAgeAccentuator"> Use Card Age Accentuator.</label>
+            <a class="tooltip" class="tooltip">?
+                <span>
+                  Use this to better visualize the age of your
+                  cards.  They start looking like aged paper based the age of 
+                  the card.  The age breakpoints are configurable.
+                </span>
+              </a>
+        </span>
+        <span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label>Age breakpoints:
+            <input type="text" id="ageBreakPoints">
+          </label>
+        </span>
+  </p>
+  <p>
+    <label>Use Custom Hooks Array. (Advanced)
+      <a class="tooltip" class="tooltip">Show me how
+        <span>
+          ****Example Hooks Array****
+          <br /> [{
+          <br /> "id": 76,
+          <br /> "eventName": "onStoryBackTrack",
+          <br /> "action": "showImageWithSound",
+          <br /> "args": ["chrome-extension://djlaoaopcmehjabmnkdfnpemjjkdkepd/img/soupNazi.gif",
+          <br /> "chrome-extension://djlaoaopcmehjabmnkdfnpemjjkdkepd/audio/noSoup.mp3",
+          <br /> "peek-down-quick 2s"]
+          <br /> }]
+          <br />
+        </span>
+      </a>
     </label>
-</p>
-<p>
-  <label>Custom Image URL: <input type="text" id="imageUrl"></label>
-</p>
-<p>
-<label>
-      <input type="checkbox" id="useCustomSound">
-      Use Custom Sound.
-    </label>
-</p>
-<p>
-  <label>Custom Sound URL: <input type="text" id="soundUrl"></label>
-</p>
-<p>
-    <label >Use Custom Hooks Array. (Advanced) <a class="tooltip" class="tooltip">Show me how<span>
-****Example Hooks Array****<br />
-[{<br />
-        "id": 76,<br />
-        "eventName": "onStoryBackTrack",<br />
-        "action": "showImageWithSound",<br />
-        "args": ["chrome-extension://djlaoaopcmehjabmnkdfnpemjjkdkepd/img/soupNazi.gif",<br />
-               "chrome-extension://djlaoaopcmehjabmnkdfnpemjjkdkepd/audio/noSoup.mp3",<br />
-               "peek-down-quick 2s"]<br />
-}]<br />
-</span></a></label>
-</p>
-<p>
+  </p>
+  <p>
     <textarea id="customHooksFile"> </textarea>
-</p>
+  </p>
 
-<p>
-  <button id="save">Save</button><span id="status" style="color: white;"></span>
-</p>
+  <p>
+    <button id="save">Save</button>
+    <span id="status" style="color: white;"></span>
+  </p>
   <script src="/js/options.js"></script>
 </body>
+
 </html>

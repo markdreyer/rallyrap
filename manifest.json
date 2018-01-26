@@ -19,7 +19,8 @@
                 "js/events.DOM.js",
                 "js/events.js",
                 "js/raptorize.js",
-                "js/rallyrap.js"
+                "js/rallyrap.js",
+                "js/layering.js"
             ],
             "css": [
                 "css/rallyrap.css"
