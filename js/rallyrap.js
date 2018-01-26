@@ -46,7 +46,9 @@ var rallyrapDefaultHooks =
 //Initialize Rallyrap
 chrome.storage.sync.get({
         //Defaults
-        customHooksFile: ''
+        customHooksFile: '',
+        useAgeAccentuator: true,
+        ageBreakPoints: "5,10,15,20"
     }, function(items) {
 
         rallyrapEventsDOM.init();
@@ -56,5 +58,10 @@ chrome.storage.sync.get({
             rallyrapEvents.initHooks(rallyrapDefaultHooks);
         }
 
+        $(document).ready(function () {
+            setInterval(function () {
+                layerer.ageCards(items.useAgeAccentuator, items.ageBreakPoints);        
+            }, 5000);
+        });
     });
 

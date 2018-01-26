@@ -22,6 +22,8 @@ function save_options() {
         raptorizeAudioUrl: raptorizeAudioUrlSelect.options[raptorizeAudioUrlIndex].value,
         useCustomImage: document.getElementById('useCustomImage').checked,
         useCustomSound: document.getElementById('useCustomSound').checked,
+        useAgeAccentuator: document.getElementById('useAgeAccentuator').checked,
+        ageBreakPoints: document.getElementById('ageBreakPoints').value,
         imageUrl: document.getElementById('imageUrl').value,
         soundUrl: document.getElementById('soundUrl').value,
         customHooksFile: customHooksFile
@@ -45,7 +47,9 @@ function restore_options() {
         useCustomSound: false,
         imageUrl: '',
         soundUrl: '',
-        customHooksFile: ''
+        customHooksFile: '',
+        useAgeAccentuator: true,
+        ageBreakPoints: "5,10,15,20"
     }, function(items) {
         var raptorImageSelect = document.getElementById('raptorizeImageUrl');
         for (var i = 0; i < raptorImageSelect.length; i++) {
@@ -62,6 +66,8 @@ function restore_options() {
         document.getElementById('useCustomSound').checked = items.useCustomSound;
         document.getElementById('soundUrl').value = items.soundUrl;
         document.getElementById('customHooksFile').value = items.customHooksFile;
+        document.getElementById('useAgeAccentuator').checked = items.useAgeAccentuator;
+        document.getElementById('ageBreakPoints').value = items.ageBreakPoints;
     });
 }
 
