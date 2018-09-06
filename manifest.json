@@ -34,7 +34,7 @@
         "page": "html/options.html",
         "chrome_style": true
     },
-    "description": "Instant Velociraptor on any page and for Rally",
+    "description": "Instant Velociraptor for your Rally (CA Agile Central) board",
     "icons": {
         "48": "img/icon48.png",
         "128": "img/icon128.png"

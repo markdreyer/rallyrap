@@ -5,7 +5,7 @@ var background = {
             code: 'try {' +
                     'rallyrapEvents.executeHooks(\'onStoryCompleted\');' +
                   '} catch(err) {' +
-                    'window.alert(\"Raptorize for Rally: Please reload the current page.\");' +
+                    'window.alert(\"Raptorize for Rally: Something went wrong. To respect your privacy, this extension only runs on rallydev.com websites.\");' +
                   '}'
           });
         });
