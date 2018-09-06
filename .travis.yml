@@ -5,5 +5,4 @@ script:
   - npm run build -- $TRAVIS_BUILD_NUMBER
   - npm test
 after_success:
-  - WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id $CLIENT_ID --client_secret $CLIENT_SECRET)
-  - chrome-webstore-manager update $EXTENSION_ID ./build/rallyrap.zip
+  - chrome-webstore-manager update -t $(chrome-webstore-manager refresh_token --client_id $CLIENT_ID --client_secret $CLIENT_SECRET) $EXTENSION_ID ./build/rallyrap.zip
