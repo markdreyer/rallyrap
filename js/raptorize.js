@@ -150,6 +150,7 @@ var raptorizeActions = {
         'audio/wytbw.mp3',
         'audio/ateam.mp3',
         'audio/OnceInLifetime.mp3',
+        'audio/rp_she_clip1.mp3',
         'audio/cheers.mp3'
     ]
 };
