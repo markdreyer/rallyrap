@@ -1,9 +1,9 @@
 {
   "devDependencies": {
-    "file-system": "2.2.2",
-    "jshint": "2.9.6",
     "archiver": "3.0.0",
-    "chrome-webstore-manager": "0.4.1"
+    "chrome-webstore-manager": "^0.4.2",
+    "file-system": "2.2.2",
+    "jshint": "^2.11.0"
   },
   "scripts": {
     "build": "node build.js",

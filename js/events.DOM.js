@@ -5,13 +5,13 @@ var rallyrapEventsDOM =
   {
 
       console.debug('dom hooks initiated');
-      var viewport = document.getElementById('viewport');
-      if (viewport) {
+      var rootElement = document.getElementById('root');
+      if (rootElement) {
 
         /**
          * Listener for moving a task.
          */
-        viewport.addEventListener('mouseup', function(e) {
+        rootElement.addEventListener('mouseup', function(e) {
             var numberOfColumns = $('.rally-drop-indicator').parents('tr').children('td.card-column').length,
                 toIndex = $('.rally-drop-indicator').parents('td').index(),
                 fromIndex = $('.dragged-card').parents('td').index();
@@ -28,7 +28,7 @@ var rallyrapEventsDOM =
         /**
          * Listener for blocking a task.
          */
-          viewport.addEventListener('click', function(e) {
+          rootElement.addEventListener('click', function(e) {
             var target = $(e.target);
 
                 /* On click of the blocked button */
